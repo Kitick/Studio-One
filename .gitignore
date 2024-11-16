@@ -10,6 +10,15 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
+#adding this
+.idea/
+.vscode/
+/Assets/Unity.VisualScripting.Generated/
+Assets/Unity.VisualScripting.Generated.meta
+*.DS_Store
+**/Artifacts
+*/Library
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
