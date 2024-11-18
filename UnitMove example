@@ -1,0 +1,35 @@
+//Here is an example of workingn code for a 3d rts implementation based on this video: https://www.youtube.com/watch?v=-GfdKB_7mrY
+//It'll need some care to work properly for a 2d engine as I think we planned. I'm just putting it here as an example for the time being.
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine AI;
+
+public class UnitMove : MonoBehaviour
+{
+    Camera cam;
+    NavMeshAgent agent;
+    public LayerMask ground;
+
+    private void start()
+    {
+        cam = Camera.main;
+        agent = getComponent < NavMeshAgent>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            RaycastHit hit;
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, ground))
+            {
+                agent.SetDestination(hit.point);
+            }
+        }
+    }
+
+}
