@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEditor.SearchService;
 using UnityEditor.UI;
 using UnityEngine;
@@ -60,7 +59,6 @@ public class LevelDot : MonoBehaviour
 
     public void HoverOff() {
 
-        Debug.Log("Hovered Off");
         if (selectable == false && active == true) {
             lockedText.GetComponent<Animation>()["Hovered"].speed = -1.0f;
             lockedText.GetComponent<Animation>().Play();
