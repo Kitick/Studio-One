@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Indicator and Ground marker not working yet
-//Weird sprite rotation bug in beginning of playmode that requires turning off navmeshagent to select the unit, then turning it back on.
+//Indicator and Ground marker not working yet.
 
 public class UnitSelectionManager : MonoBehaviour
 {
@@ -12,64 +11,50 @@ public class UnitSelectionManager : MonoBehaviour
 
     public static UnitSelectionManager Instance { get; set; }
 
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
+    private void Awake(){
+        if (Instance != null && Instance != this){
             Destroy(gameObject);
         }
-        else
-        {
+        else{
             Instance = this;
         }
     }
 
     //list of all units in game
 
-    public List<GameObject> allUnitsList = new List<GameObject>();
-    public List<GameObject> unitsSelected = new List<GameObject>();
+    private List<GameObject> allUnitsList = new List<GameObject>();
+    private List<GameObject> unitsSelected = new List<GameObject>();
+	private Dictionary<GameObject, Unit> unitObjectMap = new Dictionary<GameObject, Unit>();
 
     //get layers
     public LayerMask clickable;
     public LayerMask floor;
     public GameObject floorMarker;
 
-    private Camera cam;
+    private void Start(){
 
-    //get camera
-    private void Start()
-    {
-        cam = Camera.main;
     }
 
-    private void Update()
-    {
+    private void Update(){
 
-        if (Input.GetMouseButtonDown(0))
-        {
+        if (Input.GetMouseButtonDown(0)){
             //convert mouse position to world point
-            Vector3 worldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             worldPosition.z = 0;
-
 
             //casting ray to detect units
             RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero, Mathf.Infinity, clickable);
 
-            if (hit.collider != null)
-            {
-                if (Input.GetKey(KeyCode.LeftShift))
-                {
+            if (hit.collider != null){
+                if (Input.GetKey(KeyCode.LeftShift)){
                     MultiSelect(hit.collider.gameObject);
                 }
-                else
-                {
-                    clickSelect(hit.collider.gameObject);
+                else{
+                    ClickSelect(hit.collider.gameObject);
                 }
             }
-            else
-            {
-                if (!Input.GetKey(KeyCode.LeftShift))
-                {
+        	else{
+                if (!Input.GetKey(KeyCode.LeftShift)){
                     DeselectAll();
                 }
 
@@ -78,18 +63,15 @@ public class UnitSelectionManager : MonoBehaviour
 
         //Floor Marker
         //also displays ground marker on sending units
-        if (Input.GetMouseButtonDown(1) && unitsSelected.Count > 0)
-        {
-            //convert mouse position to world point
-            Vector3 worldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.GetMouseButtonDown(1) && unitsSelected.Count > 0){
+    	    //convert mouse position to world point
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             worldPosition.z = 0;
-
 
             //casting ray to detect units
             RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero, Mathf.Infinity, floor);
 
-            if (hit.collider != null)
-            {
+            if (hit.collider != null){
                 Debug.Log("Raycast hit on ground " + hit.collider.name);
                 floorMarker.transform.position = hit.point;
 
@@ -97,64 +79,64 @@ public class UnitSelectionManager : MonoBehaviour
                 floorMarker.SetActive(false);
                 floorMarker.SetActive(true);
             }
-
-
         }
     }
 
-    private void MultiSelect(GameObject unit)
-    {
-        if (unitsSelected.Contains(unit) == false)
-        {
-            unitsSelected.Add(unit);
-            activateSelectionIndicator(unit, true);
-            EnableUnitMovement(unit, true);
+	public void AddToUnitList(Unit unit, GameObject unitObject){
+		unitObjectMap.Add(unitObject, unit);
+		allUnitsList.Add(unitObject);
+	}
+
+	public void RemoveFromUnitList(GameObject unitObject){
+		unitObjectMap.Remove(unitObject);
+		allUnitsList.Remove(unitObject);
+	}
+
+    private void MultiSelect(GameObject unitObject){
+        bool hasUnit = unitsSelected.Contains(unitObject);
+
+		EnableUnitMovement(unitObject, !hasUnit);
+        ActivateSelectionIndicator(unitObject, !hasUnit);
+
+		if (hasUnit){
+            unitsSelected.Remove(unitObject);
         }
-        else
-        {
-            EnableUnitMovement(unit, false);
-            activateSelectionIndicator(unit, false);
-            unitsSelected.Remove(unit);
+        else{
+			unitsSelected.Add(unitObject);
         }
     }
 
-    private void DeselectAll()
-    {
-        foreach (var unit in unitsSelected)
-        {
-            EnableUnitMovement(unit, false);
-            activateSelectionIndicator(unit, false);
-        }
+    private void DeselectAll(){
+		unitsSelected.ForEach(unitObject => {
+			EnableUnitMovement(unitObject, false);
+			ActivateSelectionIndicator(unitObject, false);
+		});
+
         floorMarker.SetActive(false);
         unitsSelected.Clear();
     }
 
-    private void clickSelect(GameObject unit)
-    {
+    private void ClickSelect(GameObject unitObject){
         //deselect when adding new units. Except maybe with shift
         DeselectAll();
 
-        unitsSelected.Add(unit);
+        unitsSelected.Add(unitObject);
 
         //this puts some indicator around an active unit
-        activateSelectionIndicator(unit, true);
+        ActivateSelectionIndicator(unitObject, true);
 
         //enables or disables movement.
-        EnableUnitMovement(unit, true);
+        EnableUnitMovement(unitObject, true);
     }
 
-    private void EnableUnitMovement(GameObject unit, bool trigger)
-    {
+    private void EnableUnitMovement(GameObject unitObject, bool trigger){
         //enables movement script for the unit upon selection
-        unit.GetComponent<UnitMove>().enabled = trigger;
+        unitObjectMap.TryGetValue(unitObject, out Unit unit);
+		unit.enabled = trigger;
     }
-
 
     //toggles on and off the indicator that appears around a unit to show it's been selected
-    private void activateSelectionIndicator(GameObject unit, bool vis)
-    {
-        unit.transform.GetChild(0).gameObject.SetActive(vis);
+    private void ActivateSelectionIndicator(GameObject unit, bool vis){
+        //unit.transform.GetChild(0).gameObject.SetActive(vis);
     }
-
 }
-

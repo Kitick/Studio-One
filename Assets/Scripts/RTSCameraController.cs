@@ -67,6 +67,7 @@ public class RTSCameraController : MonoBehaviour {
 		}
 	}
 
+	// Clamp Camera to Map Bounds
 	private Vector3 ClampPosition(Vector3 position){
 		float x = Mathf.Clamp(position.x, minMapX, maxMapX);
 		float y = Mathf.Clamp(position.y, minMapY, maxMapY);
@@ -105,7 +106,6 @@ public class RTSCameraController : MonoBehaviour {
 		float newSize = Camera.main.orthographicSize - scrollInput * zoomSpeed;
 		Camera.main.orthographicSize = Mathf.Clamp(newSize, minZoom, maxZoom);
 	}
-
 
 	private void HandleEdgeScroll(){
 		float speed = movementSpeed;
