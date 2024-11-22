@@ -13,19 +13,27 @@ public class RTSCameraController : MonoBehaviour {
 	Vector3 dragCurrentPosition;
 
 	[Header("Optional Functionality")]
-	[SerializeField] bool moveWithKeyboad;
-	[SerializeField] bool moveWithEdgeScrolling;
-	[SerializeField] bool moveWithMouseDrag;
+	[SerializeField] private bool moveWithKeyboad = true;
+	[SerializeField] private bool moveWithEdgeScrolling = true;
+	[SerializeField] private bool moveWithMouseDrag = true;
+
+
+	[Header("Zoom Settings")]
+	[SerializeField] private int zoomSpeed = 5;
+	[SerializeField] private int minZoom = 2;
+	[SerializeField] private int maxZoom = 8;
+
 
 	[Header("Keyboard Movement")]
-	[SerializeField] float movementSpeed = 0.015f;
-	[SerializeField] float fastSpeed = 0.04f;
-	[SerializeField] int movementSensitivity = 10; // Hardcoded Sensitivity
+	[SerializeField] private float movementSpeed = 0.015f;
+	[SerializeField] private float fastSpeed = 0.04f;
+	[SerializeField] private int movementSensitivity = 10; // Hardcoded Sensitivity
 
-	[SerializeField] int minMapX = -25;
-	[SerializeField] int maxMapX = 25;
-	[SerializeField] int minMapY = -10;
-	[SerializeField] int maxMapY = 10;
+	[SerializeField] private int minMapX = -25;
+	[SerializeField] private int maxMapX = 25;
+	[SerializeField] private int minMapY = -10;
+	[SerializeField] private int maxMapY = 10;
+
 
 	[Header("Edge Scrolling Movement")]
 	[SerializeField] int edgeSize = 50;
@@ -42,7 +50,6 @@ public class RTSCameraController : MonoBehaviour {
 		instance = this;
 		newPosition = transform.position;
 		//Cursor.lockState = CursorLockMode.Confined; // If we have an extra monitor we don't want to exit screen bounds
-		Debug.Log("RTSCameraController Initialized");
 	}
 
 	private void Update(){
@@ -83,10 +90,22 @@ public class RTSCameraController : MonoBehaviour {
 			HandleEdgeScroll();
 		}
 
+		HandleZoom();
+
 		newPosition = ClampPosition(newPosition);
 
 		transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementSensitivity);
 	}
+
+	private void HandleZoom(){
+		float scrollInput = Input.GetAxis("Mouse ScrollWheel"); // Get scroll input
+
+		if (scrollInput == 0){ return; }
+
+		float newSize = Camera.main.orthographicSize - scrollInput * zoomSpeed;
+		Camera.main.orthographicSize = Mathf.Clamp(newSize, minZoom, maxZoom);
+	}
+
 
 	private void HandleEdgeScroll(){
 		float speed = movementSpeed;
