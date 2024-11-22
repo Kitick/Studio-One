@@ -23,7 +23,7 @@ public class UnitSelectionManager : MonoBehaviour
     //list of all units in game
 
     private List<GameObject> allUnitsList = new List<GameObject>();
-    private List<GameObject> unitsSelected = new List<GameObject>();
+    private List<GameObject> selectedList = new List<GameObject>();
 	private Dictionary<GameObject, Unit> unitObjectMap = new Dictionary<GameObject, Unit>();
 
     //get layers
@@ -63,7 +63,7 @@ public class UnitSelectionManager : MonoBehaviour
 
         //Floor Marker
         //also displays ground marker on sending units
-        if (Input.GetMouseButtonDown(1) && unitsSelected.Count > 0){
+        if (Input.GetMouseButtonDown(1) && selectedList.Count > 0){
     	    //convert mouse position to world point
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             worldPosition.z = 0;
@@ -92,47 +92,52 @@ public class UnitSelectionManager : MonoBehaviour
 		allUnitsList.Remove(unitObject);
 	}
 
+	public void SelectUnit(GameObject unitObject){
+		EnableUnitMovement(unitObject, true);
+		ActivateSelectionIndicator(unitObject, true);
+
+		selectedList.Add(unitObject);
+	}
+
+	public void DeselectUnit(GameObject unitObject){
+		EnableUnitMovement(unitObject, false);
+		ActivateSelectionIndicator(unitObject, false);
+
+		selectedList.Remove(unitObject);
+	}
+
     private void MultiSelect(GameObject unitObject){
-        bool hasUnit = unitsSelected.Contains(unitObject);
-
-		EnableUnitMovement(unitObject, !hasUnit);
-        ActivateSelectionIndicator(unitObject, !hasUnit);
-
-		if (hasUnit){
-            unitsSelected.Remove(unitObject);
+		if (selectedList.Contains(unitObject)){
+            DeselectUnit(unitObject);
         }
         else{
-			unitsSelected.Add(unitObject);
+			SelectUnit(unitObject);
         }
     }
 
     private void DeselectAll(){
-		unitsSelected.ForEach(unitObject => {
-			EnableUnitMovement(unitObject, false);
-			ActivateSelectionIndicator(unitObject, false);
+		List<GameObject> temp = new List<GameObject>(selectedList);
+
+		temp.ForEach(unitObject => {
+			DeselectUnit(unitObject);
 		});
 
         floorMarker.SetActive(false);
-        unitsSelected.Clear();
     }
 
     private void ClickSelect(GameObject unitObject){
-        //deselect when adding new units. Except maybe with shift
         DeselectAll();
 
-        unitsSelected.Add(unitObject);
-
-        //this puts some indicator around an active unit
-        ActivateSelectionIndicator(unitObject, true);
-
-        //enables or disables movement.
-        EnableUnitMovement(unitObject, true);
+        SelectUnit(unitObject);
     }
 
+	//toggles on and off the movement of a unit
     private void EnableUnitMovement(GameObject unitObject, bool trigger){
-        //enables movement script for the unit upon selection
-        unitObjectMap.TryGetValue(unitObject, out Unit unit);
-		unit.enabled = trigger;
+        bool isUnit = unitObjectMap.TryGetValue(unitObject, out Unit unit);
+
+		if(isUnit){
+			unit.isActive = trigger;
+		}
     }
 
     //toggles on and off the indicator that appears around a unit to show it's been selected
