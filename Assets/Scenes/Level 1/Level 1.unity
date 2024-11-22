@@ -14451,7 +14451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 10
   followDistance: 1
-  moveSpeed: 1
+  moveSpeed: 2
 --- !u!195 &1285502509
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -15376,7 +15376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 10
   followDistance: 1
-  moveSpeed: 1
+  moveSpeed: 2
 --- !u!195 &1788347669
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -15739,7 +15739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 10
   followDistance: 1
-  moveSpeed: 1
+  moveSpeed: 2
 --- !u!195 &2010902692
 NavMeshAgent:
   m_ObjectHideFlags: 0
