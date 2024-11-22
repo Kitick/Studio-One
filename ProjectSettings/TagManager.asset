@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-<<<<<<< Updated upstream
-  - LevelDot
-=======
-  - Unit
->>>>>>> Stashed changes
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -16,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Floor
-  - Clickable
+  - 
+  - 
   - 
   - 
   - 
@@ -45,10 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Sprites
-    uniqueID: 1771649467
-    locked: 0
-  - name: Top Sprites
-    uniqueID: 257339985
     locked: 0

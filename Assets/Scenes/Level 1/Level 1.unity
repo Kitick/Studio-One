@@ -203,6 +203,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1273795446}
     m_Modifications:
+    - target: {fileID: 3159959903050295678, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7120819386849668703, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.79
@@ -14110,6 +14114,7 @@ GameObject:
   - component: {fileID: 1267238548}
   - component: {fileID: 1267238547}
   - component: {fileID: 1267238549}
+  - component: {fileID: 1267238550}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -14269,6 +14274,20 @@ MonoBehaviour:
   detectionRadius: 10
   followDistance: 1
   moveSpeed: 2
+--- !u!114 &1267238550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267238544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c34761ad260c9714792d619dbb846f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Range: 1.5
+  attackCooldown: 1.5
 --- !u!1 &1273795445
 GameObject:
   m_ObjectHideFlags: 0
@@ -14612,10 +14631,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickable:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   floor:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   floorMarker: {fileID: 627420757}
 --- !u!4 &1584271820
 Transform:
@@ -15064,6 +15083,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2226855063985837774, guid: f0892b9555494704a9e88c94f5476858, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2473047510515581397, guid: f0892b9555494704a9e88c94f5476858, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.431

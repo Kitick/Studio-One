@@ -7,6 +7,7 @@ public class EnemyChase : MonoBehaviour
     public float detectionRadius = 10f;
     public float followDistance = 1f;
     public float moveSpeed = 5f;
+    private EnemyAttack enemyAttack; //references enemyAttack script
 
     private Transform target; //unit to be followed
     private UnityEngine.AI.NavMeshAgent agent;
@@ -18,6 +19,8 @@ public class EnemyChase : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.speed = moveSpeed;
+
+        enemyAttack = GetComponent<EnemyAttack>();
     }
 
     void FindNearbyUnits()
@@ -47,6 +50,9 @@ public class EnemyChase : MonoBehaviour
 
         //track whatever unit is found from above
         target = nearestUnit;
+
+        //sets target for the attack script
+        enemyAttack.SetTarget(target);
     }
 
     void MoveToTarget()
