@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using TMPro;
-using UnityEditor.SearchService;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -44,7 +41,7 @@ public class LevelDot : MonoBehaviour
 
     public void Hover() {
 
-        this.GetComponent<AudioSource>().Play();
+        GetComponent<AudioSource>().Play();
 
         if (selectable == false && active == false) {
             lockedText.GetComponent<Animation>()["Hovered"].speed = 1.0f;
@@ -59,6 +56,7 @@ public class LevelDot : MonoBehaviour
 
     public void HoverOff() {
 
+        Debug.Log("Hovered Off");
         if (selectable == false && active == true) {
             lockedText.GetComponent<Animation>()["Hovered"].speed = -1.0f;
             lockedText.GetComponent<Animation>().Play();
