@@ -1,21 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.AI;
 
-public class Unit : MonoBehaviour
-{
+public class Unit : MonoBehaviour {
+	private Vector3 target;
+	NavMeshAgent agent;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //when instantiated, call method to add to all units list
-        UnitSelectionManager.Instance.allUnitsList.Add(gameObject);
-    }
+	private void Start(){
+		agent = GetComponent<NavMeshAgent>();
+		agent.updateRotation = false;
+		agent.updateUpAxis = false;
 
-    //remove when unit dead
-    private void OnDestroy()
-    {
-        UnitSelectionManager.Instance.allUnitsList.Remove(gameObject); 
-    }
+		UnitSelectionManager.Instance.AddToUnitList(this, gameObject);
+	}
 
+	public GameObject GetGameObject(){
+		return gameObject;
+	}
+
+	private void OnDestroy(){
+		UnitSelectionManager.Instance.RemoveFromUnitList(gameObject);
+	}
+
+	private void Update(){
+		SetTargetPosition();
+		SetAgentPosition();
+	}
+
+	public void SetTargetPosition(){
+		if (Input.GetMouseButtonDown(1)){
+			target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		}
+	}
+
+	public void SetAgentPosition(){
+		agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
+	}
 }
