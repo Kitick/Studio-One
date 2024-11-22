@@ -1,19 +1,5 @@
 {
   "dependencies": {
-    "com.onchainstudios.filetemplates": {
-      "version": "https://github.com/onchainstudios/onchainstudios-unity-extensions.git?path=/Packages/com.onchainstudios.filetemplates#v0.7.0-preview.13",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "11ff10f964df4802fe3b1cc9055e8346fd86f436"
-    },
-    "com.onchainstudios.onchainuitoolkit": {
-      "version": "https://github.com/onchainstudios/onchainstudios-unity-extensions.git?path=/Packages/com.onchainstudios.uitoolkitextensions#v0.7.0-preview.13",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "11ff10f964df4802fe3b1cc9055e8346fd86f436"
-    },
     "com.unity.2d.animation": {
       "version": "9.1.2",
       "depth": 1,
@@ -127,13 +113,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.collab-proxy": {
-      "version": "2.5.2",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.collections": {
       "version": "1.2.4",
       "depth": 2,
@@ -172,15 +151,6 @@
       "source": "registry",
       "dependencies": {
         "com.unity.ext.nunit": "1.0.6"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.ide.visualstudio": {
-      "version": "2.0.22",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.test-framework": "1.1.9"
       },
       "url": "https://packages.unity.com"
     },
@@ -287,16 +257,6 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
-    },
-    "com.unity.visualscripting": {
-      "version": "1.9.4",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.ugui": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

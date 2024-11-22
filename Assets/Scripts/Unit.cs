@@ -4,7 +4,9 @@ using UnityEngine.AI;
 
 public class Unit : MonoBehaviour {
 	private Vector3 target;
-	NavMeshAgent agent;
+	public NavMeshAgent agent;
+
+	public bool isActive = false;
 
 	private void Start(){
 		target = transform.position;
@@ -16,15 +18,13 @@ public class Unit : MonoBehaviour {
 		UnitSelectionManager.Instance.AddToUnitList(this, gameObject);
 	}
 
-	public GameObject GetGameObject(){
-		return gameObject;
-	}
-
 	private void OnDestroy(){
 		UnitSelectionManager.Instance.RemoveFromUnitList(gameObject);
 	}
 
 	private void Update(){
+		if(!isActive){ return; }
+
 		SetTargetPosition();
 		SetAgentPosition();
 	}
