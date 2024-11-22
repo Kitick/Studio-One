@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< Updated upstream
   - LevelDot
+=======
+  - Unit
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
