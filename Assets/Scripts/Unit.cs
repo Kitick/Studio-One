@@ -7,6 +7,8 @@ public class Unit : MonoBehaviour {
 	NavMeshAgent agent;
 
 	private void Start(){
+		target = transform.position;
+
 		agent = GetComponent<NavMeshAgent>();
 		agent.updateRotation = false;
 		agent.updateUpAxis = false;
