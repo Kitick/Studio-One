@@ -28,7 +28,7 @@ public class BasicAttack : MonoBehaviour {
 		List<GameObject> targets = new List<GameObject>();
 
 		foreach(Collider2D collider in hitColliders){
-			if(collider.CompareTag(targetTag) && collider.TryGetComponent(out Health health)){
+			if(collider.CompareTag(targetTag) && collider.GetComponent<Health>() != null){
 				targets.Add(collider.gameObject);
 			}
 		}

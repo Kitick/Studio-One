@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 953023948943642112}
   - component: {fileID: 3913214758460670053}
   - component: {fileID: 2167850216353463205}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Unit
-  m_TagString: Unit
+  m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
 --- !u!114 &953023948943642112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,3 +202,4 @@ MonoBehaviour:
   damage: 5
   attackSpeed: 1
   attackRange: 1.5
+  targetTag: Enemy

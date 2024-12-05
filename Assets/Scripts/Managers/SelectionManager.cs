@@ -77,9 +77,11 @@ public class SelectionManager : MonoBehaviour {
 
 	private void MoveOrder(Vector3 destination){
 		foreach(Selectable selectable in selectedObjects){
-			if(selectable.TryGetComponent(out Movable movable)){
-				movable.MoveTo(destination);
-			}
+			Movable movable = selectable.GetComponent<Movable>();
+
+			if(movable == null){ continue; }
+
+			movable.MoveTo(destination);
 		}
 	}
 
