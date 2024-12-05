@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyChase : MonoBehaviour
+public class ChaseAI : MonoBehaviour
 {
     public float detectionRadius = 10f;
     public float followDistance = 1f;
@@ -71,7 +71,7 @@ public class EnemyChase : MonoBehaviour
         if (target != null)
         {
             MoveToTarget();
-            
+
             //if target reached, stop moving
             if (Vector2.Distance(transform.position, target.position) <= followDistance)
             {

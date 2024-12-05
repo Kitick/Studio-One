@@ -15,7 +15,7 @@ public class SelectionManager : MonoBehaviour {
 
 	private void Update(){
 		HandleSelection();
-		HandleMovement();
+		HandleOrder();
 	}
 
 	private void HandleSelection(){
@@ -33,13 +33,13 @@ public class SelectionManager : MonoBehaviour {
 
 		Selectable selectable = hit.collider.GetComponent<Selectable>();
 
-		if(selectable != null){
-			if(Input.GetKey(cherryPickKey)){
-				CherryPick(selectable);
-			}
-			else{
-				SingleSelect(selectable);
-			}
+		if(selectable == null){ return; }
+
+		if(Input.GetKey(cherryPickKey)){
+			CherryPick(selectable);
+		}
+		else{
+			SingleSelect(selectable);
 		}
 	}
 
@@ -57,7 +57,7 @@ public class SelectionManager : MonoBehaviour {
 		}
 	}
 
-	private void HandleMovement(){
+	private void HandleOrder(){
 		if(!Input.GetMouseButtonDown(orderMouse)){ return; }
 
 		Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -68,7 +68,7 @@ public class SelectionManager : MonoBehaviour {
 		if(!hit.collider){ return; }
 
 		foreach(Selectable selectable in selectedObjects){
-			if(selectable.TryGetComponent<Movable>(out Movable movable)){
+			if(selectable.TryGetComponent(out Movable movable)){
 				movable.MoveTo(hit.point);
 			}
 		}
