@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 33741449}
   - component: {fileID: 33741451}
   - component: {fileID: 33741450}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Minimap Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 84389469}
   - component: {fileID: 84389471}
   - component: {fileID: 84389470}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Rock Obstacle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 407589617}
   - component: {fileID: 407589619}
   - component: {fileID: 407589620}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13599,7 +13599,7 @@ GameObject:
   - component: {fileID: 473717757}
   - component: {fileID: 473717759}
   - component: {fileID: 473717758}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: River Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13837,7 +13837,7 @@ GameObject:
   - component: {fileID: 595222897}
   - component: {fileID: 595222899}
   - component: {fileID: 595222898}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Rock Obstacle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14104,7 +14104,7 @@ GameObject:
   - component: {fileID: 949110251}
   - component: {fileID: 949110253}
   - component: {fileID: 949110252}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Minimap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14173,6 +14173,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2167850216353463205, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
+      propertyPath: targetTag
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 7120819386849668703, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.9155726
@@ -14217,6 +14221,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unit
       objectReference: {fileID: 0}
+    - target: {fileID: 8048191156958303496, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048191156958303496, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
+      propertyPath: m_TagString
+      value: Friendly
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14232,7 +14244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1088853276}
   - component: {fileID: 1088853275}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14272,6 +14284,67 @@ Transform:
   - {fileID: 595222897}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1105904575
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1181838181305677750, guid: af44e13af18db9840bc8f1f29ac50b98, type: 3}
+      propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1181838181305677750, guid: af44e13af18db9840bc8f1f29ac50b98, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183627251412391515, guid: af44e13af18db9840bc8f1f29ac50b98, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183627251412391515, guid: af44e13af18db9840bc8f1f29ac50b98, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183627251412391515, guid: af44e13af18db9840bc8f1f29ac50b98, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183627251412391515, guid: af44e13af18db9840bc8f1f29ac50b98, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183627251412391515, guid: af44e13af18db9840bc8f1f29ac50b98, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183627251412391515, guid: af44e13af18db9840bc8f1f29ac50b98, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183627251412391515, guid: af44e13af18db9840bc8f1f29ac50b98, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183627251412391515, guid: af44e13af18db9840bc8f1f29ac50b98, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183627251412391515, guid: af44e13af18db9840bc8f1f29ac50b98, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183627251412391515, guid: af44e13af18db9840bc8f1f29ac50b98, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: af44e13af18db9840bc8f1f29ac50b98, type: 3}
 --- !u!1 &1379583607
 GameObject:
   m_ObjectHideFlags: 0
@@ -14283,7 +14356,7 @@ GameObject:
   - component: {fileID: 1379583608}
   - component: {fileID: 1379583610}
   - component: {fileID: 1379583609}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Bottom Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14577,7 +14650,7 @@ Transform:
   m_GameObject: {fileID: 1584271818}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7677332, y: 0.891473, z: -19.937351}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14596,12 +14669,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 519420031}
-  selectableLayer:
+  layer:
     serializedVersion: 2
-    m_Bits: 64
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1
   selectMouse: 0
   orderMouse: 1
   cherryPickKey: 306
@@ -14616,7 +14686,7 @@ GameObject:
   - component: {fileID: 1626684253}
   - component: {fileID: 1626684255}
   - component: {fileID: 1626684254}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Bottom Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14758,7 +14828,7 @@ GameObject:
   - component: {fileID: 1669520674}
   - component: {fileID: 1669520676}
   - component: {fileID: 1669520675}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: River Obstacle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14860,7 +14930,7 @@ GameObject:
   - component: {fileID: 1739242217}
   - component: {fileID: 1739242216}
   - component: {fileID: 1739242215}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14950,63 +15020,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1001 &1798278055
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7120819386849668703, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6.9155726
-      objectReference: {fileID: 0}
-    - target: {fileID: 7120819386849668703, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.5861993
-      objectReference: {fileID: 0}
-    - target: {fileID: 7120819386849668703, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7120819386849668703, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7120819386849668703, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7120819386849668703, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7120819386849668703, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7120819386849668703, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7120819386849668703, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7120819386849668703, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048191156958303496, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
-      propertyPath: m_Name
-      value: Unit (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d44c52c3f8853844f8cfe5c563070eb0, type: 3}
 --- !u!1 &1966091219
 GameObject:
   m_ObjectHideFlags: 0
@@ -15097,7 +15110,7 @@ GameObject:
   - component: {fileID: 1974181730}
   - component: {fileID: 1974181732}
   - component: {fileID: 1974181731}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Rock Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15201,4 +15214,4 @@ SceneRoots:
   - {fileID: 627420759}
   - {fileID: 1739242218}
   - {fileID: 1052920980}
-  - {fileID: 1798278055}
+  - {fileID: 1105904575}

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 public class SelectionManager : MonoBehaviour {
 	[SerializeField] private Camera mainCamera;
-	[SerializeField] private LayerMask selectableLayer;
-	[SerializeField] private LayerMask groundLayer;
+	[SerializeField] private LayerMask layer;
 
 	[SerializeField] private int selectMouse = 0;
 	[SerializeField] private int orderMouse = 1;
@@ -21,25 +20,23 @@ public class SelectionManager : MonoBehaviour {
 	private void HandleSelection(){
 		if(!Input.GetMouseButtonDown(selectMouse)){ return; }
 
-		Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-		RaycastHit hit;
+		RaycastHit2D hit = Raycast();
 
-		if(!Physics.Raycast(ray, out hit, Mathf.Infinity, selectableLayer)){
+		Selectable selected = hit.collider?.GetComponent<Selectable>();
+
+		if(selected == null){
 			if(!Input.GetKey(cherryPickKey)){
 				DeselectAll();
 			}
+
 			return;
 		}
 
-		Selectable selectable = hit.collider.GetComponent<Selectable>();
-
-		if(selectable == null){ return; }
-
 		if(Input.GetKey(cherryPickKey)){
-			CherryPick(selectable);
+			CherryPick(selected);
 		}
 		else{
-			SingleSelect(selectable);
+			SingleSelect(selected);
 		}
 	}
 
@@ -57,19 +54,31 @@ public class SelectionManager : MonoBehaviour {
 		}
 	}
 
-	private void HandleOrder(){
-		if(!Input.GetMouseButtonDown(orderMouse)){ return; }
-
+	private RaycastHit2D Raycast(){
 		Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 		Vector2 rayOrigin = new Vector2(mousePosition.x, mousePosition.y);
 
-		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.zero, Mathf.Infinity, groundLayer);
+		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.zero, Mathf.Infinity, layer);
 
-		if(!hit.collider){ return; }
+		return hit;
+	}
 
+	private void HandleOrder(){
+		if(!Input.GetMouseButtonDown(orderMouse)){ return; }
+
+		RaycastHit2D hit = Raycast();
+
+		if(hit.collider == null){ return; }
+
+		Selectable selected = hit.collider.GetComponent<Selectable>();
+
+		if(selected == null){ MoveOrder(hit.point); }
+	}
+
+	private void MoveOrder(Vector3 destination){
 		foreach(Selectable selectable in selectedObjects){
 			if(selectable.TryGetComponent(out Movable movable)){
-				movable.MoveTo(hit.point);
+				movable.MoveTo(destination);
 			}
 		}
 	}

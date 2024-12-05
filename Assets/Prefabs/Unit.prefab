@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7120819386849668703}
   - component: {fileID: 5071635816639141110}
   - component: {fileID: 7138692876639367218}
-  - component: {fileID: 5317621257727541658}
+  - component: {fileID: 8481125750659166469}
   - component: {fileID: 4299422692219764757}
   - component: {fileID: 953023948943642112}
   - component: {fileID: 3913214758460670053}
@@ -112,13 +112,15 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!135 &5317621257727541658
-SphereCollider:
+--- !u!58 &8481125750659166469
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8048191156958303496}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -127,12 +129,24 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4299422692219764757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,3 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e18f800548561a44ac8c63a929a9bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
+  attackSpeed: 1
+  attackRange: 1.5
