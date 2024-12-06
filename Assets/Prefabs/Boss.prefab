@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5887943131833171111}
   - component: {fileID: 5071581155332532376}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 68912919139522d449c89ffed226ec79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,7 +125,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -134,9 +134,22 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.5773587}
-      - {x: -0.5, y: -0.28866667}
-      - {x: 0.5, y: -0.28866667}
+    - - {x: 0.31, y: -0.08}
+      - {x: 0.22, y: 0.37}
+      - {x: 0.17, y: 0.37}
+      - {x: 0.049999997, y: 0.39999998}
+      - {x: -0.04, y: 0.39999998}
+      - {x: -0.13, y: 0.29999998}
+      - {x: -0.16, y: 0.38}
+      - {x: -0.22999999, y: 0.34}
+      - {x: -0.26999998, y: -0.04}
+      - {x: -0.5, y: -0.41}
+      - {x: -0.5, y: -0.47}
+      - {x: -0.44, y: -0.48999998}
+      - {x: 0.37, y: -0.48999998}
+      - {x: 0.48, y: -0.47}
+      - {x: 0.5, y: -0.45999998}
+      - {x: 0.5, y: -0.42}
   m_UseDelaunayMesh: 0
 --- !u!195 &7050516807560048681
 NavMeshAgent:
@@ -202,6 +215,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxValues: fa0000006400000064000000
+  defenseValues: 000000000000000000000000
+  deathSound: {fileID: 8300000, guid: 9b58093d9a473034f9a25ed88beae92a, type: 3}
 --- !u!114 &5071581155332532376
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,25 +1,17 @@
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class Selectable : MonoBehaviour {
-	public bool isSelected = false;
+	[HideInInspector] public bool isSelected = false;
 
 	[SerializeField] private GameObject selectionIndicator;
 
 	private void Start(){
-		Deselect();
-	}
-
-	public void Select(){
-		isSelected = true;
-
-		if(selectionIndicator == null){ return; }
-		selectionIndicator.SetActive(true);
-	}
-
-	public void Deselect(){
 		isSelected = false;
+	}
 
+	private void Update(){
 		if(selectionIndicator == null){ return; }
-		selectionIndicator.SetActive(false);
+		selectionIndicator.SetActive(isSelected);
 	}
 }

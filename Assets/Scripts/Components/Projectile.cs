@@ -7,8 +7,14 @@ public class Projectile : AttackBase {
 	[SerializeField] private float speed = 10f;
 	[SerializeField] private Defense.DamageType damageType = Defense.DamageType.Physical;
 
+	private AudioSource audioSource;
+
 	private Vector2 targetPosition;
 	private bool fired = false;
+
+	private void Awake(){
+		audioSource = GetComponent<AudioSource>();
+	}
 
 	private void Update(){
 		if(!fired){ return; }
@@ -26,6 +32,8 @@ public class Projectile : AttackBase {
 	}
 
 	public void Fire(Vector2 position){
+		audioSource.Play();
+
 		targetPosition = position;
 		fired = true;
 	}
