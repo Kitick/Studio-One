@@ -15,7 +15,7 @@ public class BasicAttack : AttackBase {
 
 		List<GameObject> targets = FindTargets(attackRange);
 
-		targets.RemoveAll(target => !target.CompareTag(targetTag) || target.GetComponent<Health>() == null);
+		targets.RemoveAll(target => !target.CompareTag(targetTag) || target.GetComponent<Defense>() == null);
 
 		GameObject nearest = NearestTarget(targets);
 
@@ -25,9 +25,9 @@ public class BasicAttack : AttackBase {
 	}
 
 	public void Attack(GameObject target){
-		Health health = target.GetComponent<Health>();
+		Defense defense = target.GetComponent<Defense>();
 
-		health.Damage(damage);
+		defense.Damage(Defense.DefenseType.Armor, damage);
 
 		lastAttackTime = Time.time;
 	}

@@ -8,7 +8,7 @@ public class ChaseAI : AttackBase {
 	private void Update(){
 		List<GameObject> targets = FindTargets(range);
 
-		targets.RemoveAll(target => !target.CompareTag(targetTag) || target.GetComponent<Health>() == null);
+		targets.RemoveAll(target => !target.CompareTag(targetTag) || target.GetComponent<Defense>() == null);
 
 		GameObject nearest = NearestTarget(targets);
 

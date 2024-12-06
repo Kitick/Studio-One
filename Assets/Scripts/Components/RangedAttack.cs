@@ -18,7 +18,7 @@ public class RangedAttack : AttackBase {
 		List<GameObject> targets = FindTargets(maxRange);
 		List<GameObject> tooClose = FindTargets(minRange);
 
-		targets.RemoveAll(target => !target.CompareTag(targetTag) || target.GetComponent<Health>() == null || tooClose.Contains(target));
+		targets.RemoveAll(target => !target.CompareTag(targetTag) || target.GetComponent<Defense>() == null || tooClose.Contains(target));
 
 		GameObject nearest = NearestTarget(targets);
 

@@ -5,6 +5,7 @@ public class Projectile : AttackBase {
 	[SerializeField] private int damage = 5;
 	[SerializeField] private float aoe = 1f;
 	[SerializeField] private float speed = 10f;
+	[SerializeField] private Defense.DamageType damageType = Defense.DamageType.Physical;
 
 	private Vector2 targetPosition;
 	private bool fired = false;
@@ -32,12 +33,12 @@ public class Projectile : AttackBase {
 	private void HitTarget(){
 		List<GameObject> targets = FindTargets(aoe);
 
-		targets.RemoveAll(target => target.GetComponent<Health>() == null);
+		targets.RemoveAll(target => target.GetComponent<Defense>() == null);
 
 		foreach(GameObject target in targets){
-			Health health = target.GetComponent<Health>();
+			Defense defense = target.GetComponent<Defense>();
 
-			health.Damage(damage);
+			defense.DamageWith(damageType, damage);
 		}
 
 		Destroy(gameObject);
