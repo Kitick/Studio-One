@@ -11,7 +11,6 @@ public class Projectile : AttackBase {
 
 	private Vector2 targetPosition;
 	private bool fired = false;
-	private float multiplier;
 
 	private void Awake(){
 		audioSource = GetComponent<AudioSource>();
@@ -34,7 +33,7 @@ public class Projectile : AttackBase {
 
 	public void Fire(Vector2 position, float multiplier = 1){
 		targetPosition = position;
-		this.multiplier = multiplier;
+		damage = (int)(damage * multiplier);
 
 		audioSource.Play();
 		fired = true;
