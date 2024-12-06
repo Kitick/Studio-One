@@ -27,7 +27,11 @@ public class SelectionManager : MonoBehaviour {
 
 		RaycastHit2D hit = Raycast();
 
-		Selectable selected = hit.collider?.GetComponent<Selectable>();
+		Selectable selected = null;
+
+		if(hit.collider != null){
+			selected = hit.collider.GetComponent<Selectable>();
+		}
 
 		if(selected == null){
 			if(!Input.GetKey(cherryPickKey)){
