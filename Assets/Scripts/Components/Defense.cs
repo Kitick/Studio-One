@@ -5,7 +5,7 @@ public class Defense : MonoBehaviour {
 	public enum DamageType {Physical, Energy}
 
 	[Header("0 = Health, 1 = Armor, 2 = Sheild")]
-	[SerializeField] private int[] maxValues = new int[3];
+	[SerializeField] public int[] maxValues = new int[3];
 
 	[Header("Debugging ONLY")]
 	[SerializeField] private int[] defenseValues = new int[3];
