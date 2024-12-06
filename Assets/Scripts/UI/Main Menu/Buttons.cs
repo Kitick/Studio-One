@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class PlayButton : MonoBehaviour
 {
 
+    public Animator settingAnim;
+
     public void Play() {
         PlayerPrefs.SetInt("LevelOne", 1);
         PlayerPrefs.SetInt("LevelTwo", 0);
@@ -15,7 +17,7 @@ public class PlayButton : MonoBehaviour
     }
 
     public void Settings() {
-        Debug.Log("Settings opened");
+        settingAnim.SetBool("Settings", true);
     }
 
     public void Quit() {
@@ -26,5 +28,9 @@ public class PlayButton : MonoBehaviour
 # else
         Application.Quit();
 #endif
+    }
+
+    public void Back() {
+        settingAnim.SetBool("Settings", false);
     }
 }
