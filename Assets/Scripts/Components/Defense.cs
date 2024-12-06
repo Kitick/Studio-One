@@ -10,8 +10,6 @@ public class Defense : MonoBehaviour {
 	[Header("Debugging ONLY")]
 	[SerializeField] private int[] defenseValues = new int[3];
 
-	[SerializeField] private AudioClip deathSound;
-
 	private void Awake(){
 		for (int i = 0; i < defenseValues.Length; i++){
 			defenseValues[i] = maxValues[i];
@@ -38,10 +36,9 @@ public class Defense : MonoBehaviour {
 		GameObject deathEffect = new GameObject("Death Effect");
 		AudioSource audioSource = deathEffect.AddComponent<AudioSource>();
 
-		audioSource.clip = deathSound;
-		audioSource.Play();
+		this.gameObject.GetComponent<AudioSource>().Play();		
 
-		Destroy(deathEffect, deathSound.length);
+		Destroy(deathEffect, this.gameObject.GetComponent<AudioSource>().clip.length);
 		Destroy(gameObject);
 	}
 
