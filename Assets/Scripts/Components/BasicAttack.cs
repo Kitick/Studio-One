@@ -13,9 +13,9 @@ public class BasicAttack : AttackBase {
 	private void Update(){
 		if(Time.time < lastAttackTime + attackSpeed){ return; }
 
-		List<GameObject> targets = FindTargets(targetTag, attackRange);
+		List<GameObject> targets = FindTargets(attackRange);
 
-		targets.RemoveAll(target => target.GetComponent<Health>() == null);
+		targets.RemoveAll(target => !target.CompareTag(targetTag) || target.GetComponent<Health>() == null);
 
 		GameObject nearest = NearestTarget(targets);
 
