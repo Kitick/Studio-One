@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 5613696251441749682}
   - component: {fileID: 4105933667364992800}
   - component: {fileID: 7050516807560048681}
-  - component: {fileID: 7300757941343760483}
   - component: {fileID: 4887575343024561031}
   - component: {fileID: 5887943131833171111}
   - component: {fileID: 5071581155332532376}
+  - component: {fileID: -5646390237196394245}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Ranged Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,8 +33,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a3431888a051242498a260173890ad4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,7 +125,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -134,9 +134,23 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.5773587}
-      - {x: -0.5, y: -0.28866667}
-      - {x: 0.5, y: -0.28866667}
+    - - {x: 0.37, y: 0.049999997}
+      - {x: 0.28, y: 0.17999999}
+      - {x: 0.17, y: 0.31}
+      - {x: 0.049999997, y: 0.48999998}
+      - {x: 0.02, y: 0.5}
+      - {x: -0.06, y: 0.5}
+      - {x: -0.21, y: 0.29}
+      - {x: -0.38, y: 0.049999997}
+      - {x: -0.42999998, y: -0.25}
+      - {x: -0.42999998, y: -0.32}
+      - {x: -0.29999998, y: -0.38}
+      - {x: -0.21, y: -0.38}
+      - {x: -0.14999999, y: -0.34}
+      - {x: 0.049999997, y: -0.38}
+      - {x: 0.35, y: -0.38}
+      - {x: 0.42999998, y: -0.37}
+      - {x: 0.42999998, y: -0.22}
   m_UseDelaunayMesh: 0
 --- !u!195 &7050516807560048681
 NavMeshAgent:
@@ -160,22 +174,6 @@ NavMeshAgent:
   m_BaseOffset: 0.71133333
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7300757941343760483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1181838181305677750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e18f800548561a44ac8c63a929a9bad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 8
-  attackSpeed: 0.8
-  attackRange: 2
-  targetTag: Friendly
 --- !u!114 &4887575343024561031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c853555d1935d2e4fa4582659e95d857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxValues: fa0000006400000064000000
+  maxValues: 190000000a00000019000000
+  defenseValues: 000000000000000000000000
+  deathSound: {fileID: 8300000, guid: 9b58093d9a473034f9a25ed88beae92a, type: 3}
 --- !u!114 &5071581155332532376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,4 +215,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 5
-  targetTag: Friendly
+  targetTag: 0
+--- !u!114 &-5646390237196394245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181838181305677750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777883abdd8cf8d42ac2e4c8faf0ce5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: 1
+  minRange: 1
+  maxRange: 4
+  cooldown: 1
+  projectilePrefab: {fileID: 8048191156958303496, guid: c828a4aa778a4a54d84909f25cd58ff9, type: 3}
+  targetTag: 0

@@ -27,7 +27,11 @@ public class SelectionManager : MonoBehaviour {
 
 		RaycastHit2D hit = Raycast();
 
-		Selectable selected = hit.collider?.GetComponent<Selectable>();
+		Selectable selected = null;
+
+		if(hit.collider != null){
+			selected = hit.collider.GetComponent<Selectable>();
+		}
 
 		if(selected == null){
 			if(!Input.GetKey(cherryPickKey)){
@@ -82,7 +86,7 @@ public class SelectionManager : MonoBehaviour {
 
 	private void MoveOrder(Vector3 destination){
 		foreach(Selectable selectable in selectedObjects){
-			Movable movable = selectable.GetComponent<Movable>();
+			Movement movable = selectable.GetComponent<Movement>();
 
 			if(movable == null){ continue; }
 

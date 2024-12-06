@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 3913214758460670053}
   - component: {fileID: 2167850216353463205}
   m_Layer: 0
-  m_Name: BasicUnit
+  m_Name: Heavy Unit
   m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,7 +117,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 704722816911484191}
@@ -164,7 +164,7 @@ SpriteRenderer:
   m_SortingLayerID: 1771649467
   m_SortingLayer: 0
   m_SortingOrder: 44
-  m_Sprite: {fileID: 21300000, guid: d4edc4ba6054a2f4d85027f4607bbe18, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f019fa2b23227314d923cb20a721cef9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -231,7 +231,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.5
 --- !u!114 &4299422692219764757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c853555d1935d2e4fa4582659e95d857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxValues: 320000003200000032000000
+  maxValues: 64000000c800000064000000
   defenseValues: 000000000000000000000000
   deathSound: {fileID: 8300000, guid: 9b58093d9a473034f9a25ed88beae92a, type: 3}
 --- !u!114 &953023948943642112
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e18f800548561a44ac8c63a929a9bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  attackSpeed: 1
-  range: 1.5
+  damage: 20
+  cooldown: 2
+  range: 1
   targetTag: 1

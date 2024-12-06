@@ -4,11 +4,13 @@ public class Defense : MonoBehaviour {
 	public enum DefenseType {Health, Armor, Sheild}
 	public enum DamageType {Physical, Energy}
 
-	[Header("Element 0 = Health, 1 = Armor, 2 = Sheild")]
+	[Header("0 = Health, 1 = Armor, 2 = Sheild")]
 	[SerializeField] private int[] maxValues = new int[3];
 
 	[Header("Debugging ONLY")]
 	[SerializeField] private int[] defenseValues = new int[3];
+
+	[SerializeField] private AudioClip deathSound;
 
 	private void Awake(){
 		for (int i = 0; i < defenseValues.Length; i++){
@@ -32,6 +34,17 @@ public class Defense : MonoBehaviour {
 		defenseValues[(int)type] = value;
 	}
 
+	private void Die(){
+		GameObject deathEffect = new GameObject("Death Effect");
+		AudioSource audioSource = deathEffect.AddComponent<AudioSource>();
+
+		audioSource.clip = deathSound;
+		audioSource.Play();
+
+		Destroy(deathEffect, deathSound.length);
+		Destroy(gameObject);
+	}
+
 	public void Restore(int amount, DefenseType type){
 		SetDefense(type, GetDefense(type) + amount);
 	}
@@ -45,7 +58,7 @@ public class Defense : MonoBehaviour {
 		remaining = Mathf.Abs(remaining);
 
 		if(type == DefenseType.Health){
-			Destroy(gameObject);
+			Die();
 		}
 		else{
 			Damage(DefenseType.Health, remaining);

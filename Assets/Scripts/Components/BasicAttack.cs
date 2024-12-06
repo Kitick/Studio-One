@@ -3,19 +3,19 @@ using System.Collections.Generic;
 
 public class BasicAttack : AttackBase {
 	[SerializeField] private int damage = 5;
-	[SerializeField] private float attackSpeed = 1f;
-	[SerializeField] private float attackRange = 1.5f;
+	[SerializeField] private float cooldown = 1f;
+	[SerializeField] private float range = 1f;
 
-	[SerializeField] private string targetTag = "Enemy";
+	[SerializeField] private TargetTag targetTag = TargetTag.Enemy;
 
 	private float lastAttackTime;
 
 	private void Update(){
-		if(Time.time < lastAttackTime + attackSpeed){ return; }
+		if(Time.time < lastAttackTime + cooldown){ return; }
 
-		List<GameObject> targets = FindTargets(attackRange);
+		List<GameObject> targets = FindTargets(range);
 
-		targets.RemoveAll(target => !target.CompareTag(targetTag) || target.GetComponent<Defense>() == null);
+		targets.RemoveAll(target => !HasTag(target, targetTag) || target.GetComponent<Defense>() == null);
 
 		GameObject nearest = NearestTarget(targets);
 
