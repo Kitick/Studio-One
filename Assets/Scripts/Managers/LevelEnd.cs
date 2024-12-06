@@ -1,12 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelEnd : MonoBehaviour
 {
     public string levelName;
+    public GameObject[] children;
 
-    void LevelUpdate() {
+    GameObject[] enemies;
+
+    void Start() {
+        foreach (GameObject child in children) {
+            child.SetActive(false);
+        }
+    }
+
+    void Update() {
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if (enemies == null || enemies.Length == 0) {
+            foreach (GameObject child in children) {
+                child.SetActive(true);
+            }
+        }
+    }
+
+    public void LevelUpdate() {
         if (levelName == "LevelOne") {
             PlayerPrefs.SetInt("LevelTwo", 1);
         } else if (levelName == "LevelTwo") {
@@ -16,5 +36,7 @@ public class LevelEnd : MonoBehaviour
         } else {
             Debug.Log("End!");
         }
+
+        SceneManager.LoadScene("Assets/Scenes/Level Select/LevelSelect.unity");
     }
 }
