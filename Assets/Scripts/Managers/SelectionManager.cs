@@ -94,6 +94,7 @@ public class SelectionManager : MonoBehaviour {
 		if(selectedObjects.Contains(selectable)){ return; }
 
 		selectedObjects.Add(selectable);
+		TriggerSelectionIndicator(selectable, true);
 		selectable.isSelected = true;
 	}
 
@@ -101,6 +102,7 @@ public class SelectionManager : MonoBehaviour {
 		if(!selectedObjects.Contains(selectable)){ return; }
 
 		selectedObjects.Remove(selectable);
+		TriggerSelectionIndicator(selectable, false);
 		selectable.isSelected = false;
 	}
 
@@ -110,5 +112,10 @@ public class SelectionManager : MonoBehaviour {
 		foreach(Selectable selectable in selectedObjectsCopy){
 			Deselect(selectable);
 		}
+	}
+
+	private void TriggerSelectionIndicator(Selectable selectable, bool visible)
+	{
+		selectable.transform.GetChild(0).gameObject.SetActive(visible);
 	}
 }
