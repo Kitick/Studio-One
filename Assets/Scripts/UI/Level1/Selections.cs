@@ -23,13 +23,13 @@ public class Selections : MonoBehaviour
             if (hit.collider.gameObject != null) {
                 unit = hit.collider.gameObject;
 
-                Debug.Log(unit.name);
-
-                if (unit != null || (unit.gameObject.tag == "Friendly" || unit.gameObject.tag == "Enemy")) {
+                if (unit != null && (unit.gameObject.tag == "Friendly" || unit.gameObject.tag == "Enemy")) {
                     selectedUnit = unit;
                 } else {
                     selectedUnit = null;
                 }
+            } else {
+                unit = null;
             }
         }
 
@@ -38,12 +38,13 @@ public class Selections : MonoBehaviour
 
     void UpdateStatsText() {
 
-        if (unit != null) {
+        if (selectedUnit != null) {
             Defense unitDefense = selectedUnit.GetComponent<Defense>();
             Movement unitSpeed = selectedUnit.GetComponent<Movement>();
 
             textbox.text = $"Health: {unitDefense.maxValues[0]}\n" +
                              $"Armor: {unitDefense.maxValues[1]}\n" +
+                             $"Shield: {unitDefense.maxValues[2]}\n" +
                              $"Speed: {unitSpeed.speed}";
         } else {
             textbox.text = "No unit selected.";
