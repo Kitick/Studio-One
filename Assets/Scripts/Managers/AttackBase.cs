@@ -2,15 +2,13 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public abstract class AttackBase : MonoBehaviour {
-	public List<GameObject> FindTargets(string tag, float range){
+	public List<GameObject> FindTargets(float range){
 		Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, range);
 
 		List<GameObject> targets = new List<GameObject>();
 
 		foreach(Collider2D collider in hitColliders){
-			if(collider.CompareTag(tag)){
-				targets.Add(collider.gameObject);
-			}
+			targets.Add(collider.gameObject);
 		}
 
 		return targets;

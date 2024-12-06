@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3913214758460670053}
   - component: {fileID: 2167850216353463205}
   m_Layer: 0
-  m_Name: Unit
+  m_Name: BasicUnit
   m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,8 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c853555d1935d2e4fa4582659e95d857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
+  maxValues: 640000003200000032000000
 --- !u!114 &953023948943642112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 353b92e079186dd4b885f31ad3ff527c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
 --- !u!114 &3913214758460670053
 MonoBehaviour:
   m_ObjectHideFlags: 0

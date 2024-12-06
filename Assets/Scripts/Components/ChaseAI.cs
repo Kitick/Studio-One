@@ -6,7 +6,9 @@ public class ChaseAI : AttackBase {
 	[SerializeField] private string targetTag = "Friendly";
 
 	private void Update(){
-		List<GameObject> targets = FindTargets(targetTag, range);
+		List<GameObject> targets = FindTargets(range);
+
+		targets.RemoveAll(target => !target.CompareTag(targetTag) || target.GetComponent<Defense>() == null);
 
 		GameObject nearest = NearestTarget(targets);
 
