@@ -26,11 +26,21 @@ public class Pause : MonoBehaviour
             }
 
             pauseMenu.SetActive(!pauseMenu.activeSelf);
+
+            if (pauseMenu.activeSelf) {
+                Time.timeScale = 0f;
+            } else {
+                Time.timeScale = 1f;
+            }
         }
         
     }
 
     public void GoToMenu() {
         SceneManager.LoadScene("Assets/Scenes/Main Menu/MainMenu.unity");
+    }
+
+    public void GoToMap() {
+        SceneManager.LoadScene("Assets/Scenes/Level Select/LevelSelect.unity");
     }
 }
