@@ -13,8 +13,13 @@ public class SelectionManager : MonoBehaviour {
 	private List<Selectable> selectedObjects = new List<Selectable>();
 
 	private void Update(){
+		VerifyList();
 		HandleSelection();
 		HandleOrder();
+	}
+
+	private void VerifyList(){
+		selectedObjects.RemoveAll(selectable => selectable == null);
 	}
 
 	private void HandleSelection(){
