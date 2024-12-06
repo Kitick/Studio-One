@@ -217,6 +217,7 @@ MonoBehaviour:
   cooldown: 2
   range: 1
   targetTag: 0
+  attackSound: {fileID: 8300000, guid: 65ce85e9a6e93ec439724fb54f03ec1d, type: 3}
 --- !u!114 &-225051017843264018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,8 +231,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 2
-  minRange: 4
-  maxRange: 8
+  minRange: 3
+  maxRange: 6
   cooldown: 1.5
   projectilePrefab: {fileID: 8048191156958303496, guid: c828a4aa778a4a54d84909f25cd58ff9, type: 3}
   targetTag: 0

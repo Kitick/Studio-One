@@ -188,10 +188,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e18f800548561a44ac8c63a929a9bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 8
-  attackSpeed: 0.8
-  attackRange: 2
-  targetTag: Friendly
+  damage: 3
+  cooldown: 0.75
+  range: 1
+  targetTag: 0
+  attackSound: {fileID: 8300000, guid: 65ce85e9a6e93ec439724fb54f03ec1d, type: 3}
 --- !u!114 &4887575343024561031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 353b92e079186dd4b885f31ad3ff527c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
 --- !u!114 &5887943131833171111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c853555d1935d2e4fa4582659e95d857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxValues: fa0000006400000064000000
+  maxValues: 320000000a0000000a000000
   defenseValues: 000000000000000000000000
   deathSound: {fileID: 8300000, guid: 9b58093d9a473034f9a25ed88beae92a, type: 3}
 --- !u!114 &5071581155332532376
@@ -233,4 +234,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 5
-  targetTag: Friendly
+  targetTag: 0

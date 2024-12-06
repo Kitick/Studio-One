@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1031699688377924617}
   m_Layer: 0
   m_Name: Physical Projectile
-  m_TagString: Friendly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +149,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 65ce85e9a6e93ec439724fb54f03ec1d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8e746718a5405d240a832c51ac44e4cf, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -249,5 +249,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   speed: 5
-  effectArea: 2
+  effectArea: 1
   damageType: 0

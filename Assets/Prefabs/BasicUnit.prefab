@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 353b92e079186dd4b885f31ad3ff527c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 4
 --- !u!114 &3913214758460670053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  attackSpeed: 1
+  cooldown: 1
   range: 1.5
   targetTag: 1
+  attackSound: {fileID: 8300000, guid: 65ce85e9a6e93ec439724fb54f03ec1d, type: 3}
