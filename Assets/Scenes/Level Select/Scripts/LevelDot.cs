@@ -23,8 +23,8 @@ public class LevelDot : MonoBehaviour
             dotSprite.color = Color.green;
         }
 
-        lockedText.GetComponent<TextMeshProUGUI>().alpha = 0f; // make invisible
-        playableText.GetComponent<TextMeshProUGUI>().alpha = 0f; // make invisible
+        lockedText.SetActive(false); // make invisible
+        playableText.SetActive(false); // make invisible
     }
 
     // Update is called once per frame
@@ -44,11 +44,11 @@ public class LevelDot : MonoBehaviour
         GetComponent<AudioSource>().Play();
 
         if (selectable == false && active == false) {
+            lockedText.SetActive(true);
             lockedText.GetComponent<Animation>()["Hovered"].speed = 1.0f;
             lockedText.GetComponent<Animation>().Play();
         } else if (selectable == true && active == false) {
-            playableText.GetComponent<Animation>()["Hovered"].speed = 1.0f;
-            playableText.GetComponent<Animation>().Play();
+            playableText.SetActive(true);
         }
 
         active = true;
@@ -60,9 +60,9 @@ public class LevelDot : MonoBehaviour
         if (selectable == false && active == true) {
             lockedText.GetComponent<Animation>()["Hovered"].speed = -1.0f;
             lockedText.GetComponent<Animation>().Play();
+            lockedText.SetActive(false);
         } else if (selectable == true && active == true) {
-            playableText.GetComponent<Animation>()["Hovered"].speed = -1.0f;
-            playableText.GetComponent<Animation>().Play();
+            playableText.SetActive(false);
         }
 
         active = false;
