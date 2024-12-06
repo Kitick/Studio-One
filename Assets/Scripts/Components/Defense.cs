@@ -33,13 +33,12 @@ public class Defense : MonoBehaviour {
 	}
 
 	private void Die(){
-		GameObject deathEffect = new GameObject("Death Effect");
-		AudioSource audioSource = deathEffect.AddComponent<AudioSource>();
 
-		this.gameObject.GetComponent<AudioSource>().Play();		
+		AudioSource explosionSound = this.gameObject.GetComponent<AudioSource>();
 
-		Destroy(deathEffect, this.gameObject.GetComponent<AudioSource>().clip.length);
-		Destroy(gameObject);
+		explosionSound.Play();
+		
+		Destroy(gameObject, 1.0f);
 	}
 
 	public void Restore(int amount, DefenseType type){
