@@ -20,9 +20,7 @@ public class Selections : MonoBehaviour
 
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.zero, Mathf.Infinity, 3);
 
-            Debug.Log(hit.collider.name);
-
-            if (hit.collider != null) {
+            if (hit.collider.gameObject != null) {
                 unit = hit.collider.gameObject;
 
                 Debug.Log(unit.name);
@@ -46,7 +44,6 @@ public class Selections : MonoBehaviour
 
             textbox.text = $"Health: {unitDefense.maxValues[0]}\n" +
                              $"Armor: {unitDefense.maxValues[1]}\n" +
-                             $"Shield: {unitDefense.maxValues[2]}\n" +
                              $"Speed: {unitSpeed.speed}";
         } else {
             textbox.text = "No unit selected.";
