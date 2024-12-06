@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Movable : MonoBehaviour {
+public class Movement : MonoBehaviour {
 	[SerializeField] private float speed = 5f;
 
 	private NavMeshAgent agent;
@@ -17,5 +17,9 @@ public class Movable : MonoBehaviour {
 
 	public void MoveTo(Vector3 position){
 		agent.SetDestination(position);
+	}
+
+	public void Stop(){
+		agent.ResetPath();
 	}
 }

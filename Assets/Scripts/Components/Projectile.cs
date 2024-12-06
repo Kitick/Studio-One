@@ -3,14 +3,15 @@ using System.Collections.Generic;
 
 public class Projectile : AttackBase {
 	[SerializeField] private int damage = 5;
-	[SerializeField] private float aoe = 1f;
 	[SerializeField] private float speed = 10f;
+	[SerializeField] private float effectArea = 1f;
 	[SerializeField] private Defense.DamageType damageType = Defense.DamageType.Physical;
 
 	private AudioSource audioSource;
 
 	private Vector2 targetPosition;
 	private bool fired = false;
+	private float multiplier;
 
 	private void Awake(){
 		audioSource = GetComponent<AudioSource>();
@@ -31,15 +32,16 @@ public class Projectile : AttackBase {
 		}
 	}
 
-	public void Fire(Vector2 position){
-		audioSource.Play();
-
+	public void Fire(Vector2 position, float multiplier = 1){
 		targetPosition = position;
+		this.multiplier = multiplier;
+
+		audioSource.Play();
 		fired = true;
 	}
 
 	private void HitTarget(){
-		List<GameObject> targets = FindTargets(aoe);
+		List<GameObject> targets = FindTargets(effectArea);
 
 		targets.RemoveAll(target => target.GetComponent<Defense>() == null);
 

@@ -2,18 +2,18 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class ChaseAI : AttackBase {
-	[SerializeField] private float range = 5f;
-	[SerializeField] private string targetTag = "Friendly";
+	[SerializeField] private float range = 5;
+	[SerializeField] private TargetTag targetTag = TargetTag.Friendly;
 
 	private void Update(){
 		List<GameObject> targets = FindTargets(range);
 
-		targets.RemoveAll(target => !target.CompareTag(targetTag) || target.GetComponent<Defense>() == null);
+		targets.RemoveAll(target => !HasTag(target, targetTag) || target.GetComponent<Defense>() == null);
 
 		GameObject nearest = NearestTarget(targets);
 
 		if(nearest != null){
-			Movable movable = GetComponent<Movable>();
+			Movement movable = GetComponent<Movement>();
 			movable.MoveTo(nearest.transform.position);
 		}
 	}

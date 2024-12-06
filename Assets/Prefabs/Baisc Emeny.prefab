@@ -33,8 +33,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 68912919139522d449c89ffed226ec79, type: 3}
+  m_Sprite: {fileID: 21300000, guid: edd94eecc4e86eb40a307ba8b1c3adb1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,22 +134,25 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.31, y: -0.08}
-      - {x: 0.22, y: 0.37}
-      - {x: 0.17, y: 0.37}
-      - {x: 0.049999997, y: 0.39999998}
-      - {x: -0.04, y: 0.39999998}
-      - {x: -0.13, y: 0.29999998}
-      - {x: -0.16, y: 0.38}
-      - {x: -0.22999999, y: 0.34}
-      - {x: -0.26999998, y: -0.04}
-      - {x: -0.5, y: -0.41}
-      - {x: -0.5, y: -0.47}
-      - {x: -0.44, y: -0.48999998}
-      - {x: 0.37, y: -0.48999998}
-      - {x: 0.48, y: -0.47}
-      - {x: 0.5, y: -0.45999998}
-      - {x: 0.5, y: -0.42}
+    - - {x: 0.41, y: -0.44}
+      - {x: 0.45, y: -0.39999998}
+      - {x: 0.45, y: -0.14999999}
+      - {x: 0.22999999, y: 0.01}
+      - {x: 0.19, y: 0.19999999}
+      - {x: 0.099999994, y: 0.26}
+      - {x: 0.08, y: 0.45}
+      - {x: -0.089999996, y: 0.45}
+      - {x: -0.19999999, y: 0.21}
+      - {x: -0.32999998, y: -0.11}
+      - {x: -0.39, y: -0.13}
+      - {x: -0.45, y: -0.21}
+      - {x: -0.45, y: -0.32}
+      - {x: -0.44, y: -0.38}
+      - {x: -0.35999998, y: -0.44}
+      - {x: -0.28, y: -0.44}
+      - {x: -0.22, y: -0.37}
+      - {x: 0.22, y: -0.39999998}
+      - {x: 0.29, y: -0.44}
   m_UseDelaunayMesh: 0
 --- !u!195 &7050516807560048681
 NavMeshAgent:

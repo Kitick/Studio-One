@@ -86,7 +86,7 @@ public class SelectionManager : MonoBehaviour {
 
 	private void MoveOrder(Vector3 destination){
 		foreach(Selectable selectable in selectedObjects){
-			Movable movable = selectable.GetComponent<Movable>();
+			Movement movable = selectable.GetComponent<Movement>();
 
 			if(movable == null){ continue; }
 
