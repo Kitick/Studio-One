@@ -7,6 +7,10 @@ public class PlayButton : MonoBehaviour
 {
 
     public void Play() {
+        PlayerPrefs.SetInt("LevelOne", 1);
+        PlayerPrefs.SetInt("LevelTwo", 0);
+        PlayerPrefs.SetInt("LevelThree", 0);
+
         SceneManager.LoadScene("Assets/Scenes/Level Select/LevelSelect.unity");
     }
 
