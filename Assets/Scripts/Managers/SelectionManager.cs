@@ -10,7 +10,7 @@ public class SelectionManager : MonoBehaviour {
 
 	[SerializeField] private KeyCode cherryPickKey = KeyCode.LeftControl;
 
-	private List<Selectable> selectedObjects = new List<Selectable>();
+	public List<Selectable> selectedObjects = new List<Selectable>();
 
 	private void Update(){
 		VerifyList();
@@ -113,6 +113,17 @@ public class SelectionManager : MonoBehaviour {
 
 		foreach(Selectable selectable in selectedObjectsCopy){
 			Deselect(selectable);
+		}
+	}
+
+	public void SelectAll (List<Selectable> unitsToAdd)
+	{
+		foreach(var unit in unitsToAdd)
+		{
+			if (!selectedObjects.Contains(unit))
+			{
+				Select(unit);
+			}
 		}
 	}
 }
