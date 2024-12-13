@@ -10,6 +10,7 @@ public class ControlsBox : MonoBehaviour
     public Animator anim;
 
     public void SetAnim() {
+        Debug.Log("Pressed!");
         anim.SetBool("On", !anim.GetBool("On"));
     }
 }

@@ -40,6 +40,7 @@ public class Pause : MonoBehaviour
 
     public void GoToMenu() {
         Time.timeScale = 1f;
+        Debug.Log("Pressed!");
         SceneManager.LoadScene("Assets/Scenes/Main Menu/MainMenu.unity");
     }
 
