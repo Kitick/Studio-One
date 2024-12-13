@@ -5,12 +5,18 @@ public class Projectile : AttackBase {
 	[SerializeField] private int damage = 5;
 	[SerializeField] private float speed = 10f;
 	[SerializeField] private float effectArea = 1f;
+	[SerializeField] public float slowModifier = 1f;
+	[SerializeField] public float burnModifier = 0f;
 	[SerializeField] private Defense.DamageType damageType = Defense.DamageType.Physical;
 
 	private AudioSource audioSource;
 
 	private Vector2 targetPosition;
 	private bool fired = false;
+
+	public int Damage { get { return damage; } }
+	public float Speed { get { return speed; } }
+	public float EffectArea { get { return effectArea; } }
 
 	private void Awake(){
 		audioSource = GetComponent<AudioSource>();
@@ -48,6 +54,7 @@ public class Projectile : AttackBase {
 			Defense defense = target.GetComponent<Defense>();
 
 			defense.DamageWith(damageType, damage);
+			defense.Effect(slowModifier, burnModifier);
 		}
 
 		Destroy(gameObject);

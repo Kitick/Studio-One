@@ -7,9 +7,11 @@ using UnityEngine;
 
 public class ControlsBox : MonoBehaviour
 {
-    public Animator anim;
 
-    public void setAnim() {
-        anim.SetBool("On", !anim.GetBool("On"));
+    public GameObject self;
+
+    public void SetAnim() {
+        Debug.Log("Pressed!");
+        self.SetActive(false);
     }
 }

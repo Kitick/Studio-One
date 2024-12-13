@@ -56,7 +56,6 @@ public class LevelDot : MonoBehaviour
 
     public void HoverOff() {
 
-        Debug.Log("Hovered Off");
         if (selectable == false && active == true) {
             lockedText.GetComponent<Animation>()["Hovered"].speed = -1.0f;
             lockedText.GetComponent<Animation>().Play();
@@ -66,5 +65,10 @@ public class LevelDot : MonoBehaviour
         }
 
         active = false;
+    }
+
+    public void Unlock() {
+        selectable = true;
+        dotSprite.color = Color.green;
     }
 }

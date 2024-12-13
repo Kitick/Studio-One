@@ -1,22 +1,36 @@
 using UnityEngine;
 
 public class Defense : MonoBehaviour {
+	[SerializeField] private HealthBar healthBar;
 	public enum DefenseType {Health, Armor, Sheild}
 	public enum DamageType {Physical, Energy}
 
 	[Header("0 = Health, 1 = Armor, 2 = Sheild")]
-	[SerializeField] public int[] maxValues = new int[3];
+	[SerializeField] private int[] maxValues = new int[3];
 
-	[Header("Debugging ONLY")]
-	[SerializeField] private int[] defenseValues = new int[3];
+	private float slowModifier = 1f;
+	private float burnModifier = 0f;
+	private int[] currentValues = new int[3];
 
 	private void Awake(){
-		for (int i = 0; i < defenseValues.Length; i++){
-			defenseValues[i] = maxValues[i];
+        for (int i = 0; i < currentValues.Length; i++){
+			currentValues[i] = maxValues[i];
 		}
+		if (healthBar != null){
+			healthBar.UpdateHealthBar(GetMaxDefense(DefenseType.Health), GetDefense(DefenseType.Health));
+		}
+    }
+
+	private void Update(){
+		Movement movement = GetComponent<Movement>();
+		if(movement != null){
+			movement.modifier = slowModifier;
+		}
+
+		Damage(DefenseType.Health, (int)(burnModifier * Time.deltaTime));
 	}
 
-	public int GetDefense(DefenseType type) => defenseValues[(int)type];
+	public int GetDefense(DefenseType type) => currentValues[(int)type];
 	public int GetMaxDefense(DefenseType type) => maxValues[(int)type];
 
 	private void SetDefense(DefenseType type, int value){
@@ -29,15 +43,21 @@ public class Defense : MonoBehaviour {
 			value = max;
 		}
 
-		defenseValues[(int)type] = value;
+		currentValues[(int)type] = value;
 	}
 
 	private void Die(){
-
-		AudioSource explosionSound = this.gameObject.GetComponent<AudioSource>();
-
+		AudioSource explosionSound = gameObject.GetComponent<AudioSource>();
 		explosionSound.Play();
-		
+
+		SelectionManager selectionManager = FindObjectOfType<SelectionManager>();
+		selectionManager.Deselect(gameObject.GetComponent<Selectable>());
+
+		SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
+		if(renderer != null){ renderer.enabled = false; }
+
+		if(healthBar != null){ healthBar.gameObject.SetActive(false); }
+
 		Destroy(gameObject, 1.0f);
 	}
 
@@ -58,7 +78,14 @@ public class Defense : MonoBehaviour {
 		}
 		else{
 			Damage(DefenseType.Health, remaining);
-		}
+			healthBar.UpdateHealthBar(maxValues[0], currentValues[0]);
+        }
+
+    }
+
+	public void Effect(float slow, float burn){
+		slowModifier = slow;
+		burnModifier = burn;
 	}
 
 	public void DamageWith(DamageType type, int amount){

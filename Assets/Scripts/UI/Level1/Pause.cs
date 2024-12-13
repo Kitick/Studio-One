@@ -39,10 +39,12 @@ public class Pause : MonoBehaviour
     }
 
     public void GoToMenu() {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Assets/Scenes/Main Menu/MainMenu.unity");
     }
 
     public void GoToMap() {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Assets/Scenes/Level Select/LevelSelect.unity");
     }
 }
