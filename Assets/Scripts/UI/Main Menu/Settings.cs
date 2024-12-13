@@ -10,6 +10,7 @@ public class Settings : MonoBehaviour
 
     public TMP_Dropdown resolutions;
     public Slider sfxSlider;
+    public Slider musicSlider;
     public AudioMixer aMixer;
 
     public void SetResolution() {
@@ -32,6 +33,10 @@ public class Settings : MonoBehaviour
 
     public void ChangeSFXVolume() {
         aMixer.SetFloat("SFXVolume", sfxSlider.value);
+    }
+
+    public void ChangeMusicVolume() {
+        aMixer.SetFloat("MusicVolume", musicSlider.value);
     }
 
 
