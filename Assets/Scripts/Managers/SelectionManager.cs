@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Unity.Mathematics;
 
 public class SelectionManager : MonoBehaviour {
 	[SerializeField] private Camera mainCamera;
@@ -85,21 +86,42 @@ public class SelectionManager : MonoBehaviour {
 		if(selected == null){ Formation(hit.point); }
 	}
 
+	private void SortList(){
+		List<Selectable> innerList = new List<Selectable>();
+		List<Selectable> outerList = new List<Selectable>();
+
+		foreach(Selectable selectable in selectedObjects){
+			if(selectable.GetComponent<RangedAttack>() != null){
+				innerList.Add(selectable);
+			}
+			else{
+				outerList.Add(selectable);
+			}
+		}
+
+		selectedObjects.Clear();
+
+		selectedObjects.AddRange(innerList);
+		selectedObjects.AddRange(outerList);
+	}
+
 	private void Formation(Vector2 destination){
-		int toMove = selectedObjects.Count;
-		int count = 0;
+		SortList();
+
+		int remaining = selectedObjects.Count;
 
 		float pi2 = Mathf.PI * 2;
 
 		for(int r = 0; true; r++){
-			for(float t = 0; t < pi2; t += pi2 / (4*r)){
-				if(count >= toMove){ return; }
-				Debug.Log("Radius: " + r + " Angle: " + t);
+			int ringSize = Mathf.Min(4 * r, remaining);
+
+			for(float t = 0; t < pi2; t += pi2 / ringSize){
+				if(remaining == 0){ return; }
 
 				Vector2 offset = new Vector2(Mathf.Cos(t), Mathf.Sin(t)) * r * 1.25f;
 
-				MoveOrder(selectedObjects[count], destination + offset);
-				count++;
+				MoveOrder(selectedObjects[selectedObjects.Count - remaining], destination + offset);
+				remaining--;
 
 				if(r == 0){ break; }
 			}
