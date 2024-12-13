@@ -13,6 +13,11 @@ public class RangedAttack : AttackBase {
 
 	private float lastAttackTime;
 
+	public float Damage { get { return multiplier * projectilePrefab.GetComponent<Projectile>().Damage; } }
+	public float MinRange { get { return minRange; } }
+	public float MaxRange { get { return maxRange; } }
+	public float AttackSpeed { get { return 1 / cooldown; } }
+
 	private void Update(){
 		if(Time.time < lastAttackTime + cooldown){ return; }
 
