@@ -36427,6 +36427,23 @@ PrefabInstance:
       propertyPath: m_BlockingMask.m_Bits
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3109019271870841171, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
+      propertyPath: m_text
+      value: 'NEW COMBAT MECHANICS
+
+
+        - You now have aspecial supprot unit!
+        But the Enemy does too...
+
+        - You shoot a slowing projectile, while
+        theirs inflicts burning!
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449080773010079332, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 103.11867
+      objectReference: {fileID: 0}
     - target: {fileID: 3518627031435972742, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
       propertyPath: m_Name
       value: Canvas
