@@ -40,7 +40,7 @@ public class BasicAttack : AttackBase {
 		Defense defense = target.GetComponent<Defense>();
 
 		audioSource.Play();
-		defense.TakeDamage(Defense.DefenseType.Armor, damage);
+		defense.Damage(Defense.DefenseType.Armor, (int)damage);
 
 		lastAttackTime = Time.time;
 	}
