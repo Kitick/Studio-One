@@ -362,7 +362,7 @@ MonoBehaviour:
   dotSprite: {fileID: 242284350}
   lockedText: {fileID: 1010913940}
   playableText: {fileID: 249185133}
-  levelName: Not made yet
+  levelName: Assets/Scenes/Level3/Level3.unity
   selectable: 0
   active: 0
 --- !u!114 &242284349
@@ -888,7 +888,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Something something something
+  m_text: Beat the 2nd boss on a space map!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2873,7 +2873,7 @@ MonoBehaviour:
   dotSprite: {fileID: 2083575114}
   lockedText: {fileID: 1255406457}
   playableText: {fileID: 799611440}
-  levelName: Not made yet
+  levelName: Assets/Scenes/Level 2/Level 2.unity
   selectable: 0
   active: 0
 --- !u!114 &2083575113
