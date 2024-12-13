@@ -1,30 +1,35 @@
 using UnityEngine;
 
 public class Defense : MonoBehaviour {
+	[SerializeField] private HealthBar healthBar;
 	public enum DefenseType {Health, Armor, Sheild}
 	public enum DamageType {Physical, Energy}
 
 	[Header("0 = Health, 1 = Armor, 2 = Sheild")]
-	[SerializeField] private float[] maxValues = new float[3];
+	[SerializeField] private int[] maxValues = new int[3];
 
 	[Header("Debugging ONLY")]
-	[SerializeField] private float[] currentValues = new float[3];
+	[SerializeField] public int[] currentValues = new int[3];
 
 	private void Awake(){
-		if(maxValues.Length != currentValues.Length && maxValues.Length != 3){
-			Debug.LogError("Defense: maxValues and currentValues must be the same length.");
-		}
-
-		for (int i = 0; i < currentValues.Length; i++){
+        for (int i = 0; i < currentValues.Length; i++){
 			currentValues[i] = maxValues[i];
 		}
-	}
+		if (healthBar == null)
+		{
+			Debug.LogError("no health bar");
+				} else
+		{
+			healthBar.UpdateHealthBar(maxValues[0], currentValues[0]); ;
+		}
+		
+    }
 
-	public float GetDefense(DefenseType type) => currentValues[(int)type];
-	public float GetMaxDefense(DefenseType type) => maxValues[(int)type];
+	public int GetDefense(DefenseType type) => currentValues[(int)type];
+	public int GetMaxDefense(DefenseType type) => maxValues[(int)type];
 
-	private void SetDefense(DefenseType type, float value){
-		float max = GetMaxDefense(type);
+	private void SetDefense(DefenseType type, int value){
+		int max = GetMaxDefense(type);
 
 		if(value < 0){
 			value = 0;
@@ -37,11 +42,10 @@ public class Defense : MonoBehaviour {
 	}
 
 	private void Die(){
-		AudioSource explosionSound = gameObject.GetComponent<AudioSource>();
-		explosionSound.Play();
 
-		SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
-		sprite.enabled = false;
+		AudioSource explosionSound = this.gameObject.GetComponent<AudioSource>();
+
+		explosionSound.Play();
 
 		Selectable selectable = gameObject.GetComponent<Selectable>();
 		if(selectable != null){ selectable.enabled = false; }
@@ -49,13 +53,14 @@ public class Defense : MonoBehaviour {
 		Destroy(gameObject, 1.0f);
 	}
 
-	public void Restore(float amount, DefenseType type){
+	public void Restore(int amount, DefenseType type){
 		SetDefense(type, GetDefense(type) + amount);
 	}
 
-	public void TakeDamage(DefenseType type, float amount){
-		float remaining = GetDefense(type) - amount;
+	public void Damage(DefenseType type, int amount){
+		int remaining = GetDefense(type) - amount;
 		SetDefense(type, remaining);
+
 
 		if(remaining >= 0){ return; }
 
@@ -65,14 +70,16 @@ public class Defense : MonoBehaviour {
 			Die();
 		}
 		else{
-			TakeDamage(DefenseType.Health, remaining);
-		}
-	}
+			Damage(DefenseType.Health, remaining);
+			healthBar.UpdateHealthBar(maxValues[0], currentValues[0]);
+        }
+        
+    }
 
 	public void DamageWith(DamageType type, int amount){
 		switch(type){
-			case DamageType.Physical: TakeDamage(DefenseType.Armor, amount); break;
-			case DamageType.Energy: TakeDamage(DefenseType.Sheild, amount); break;
+			case DamageType.Physical: Damage(DefenseType.Armor, amount); break;
+			case DamageType.Energy: Damage(DefenseType.Sheild, amount); break;
 		}
 	}
 }
