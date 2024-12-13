@@ -27,6 +27,7 @@ public class LevelEnd : MonoBehaviour
     }
 
     public void LevelUpdate() {
+        Debug.Log("Help!");
         if (levelName == "LevelOne") {
             PlayerPrefs.SetInt("LevelTwo", 1);
         } else if (levelName == "LevelTwo") {
