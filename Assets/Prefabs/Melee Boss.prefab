@@ -15,11 +15,10 @@ GameObject:
   - component: {fileID: 4887575343024561031}
   - component: {fileID: 5071581155332532376}
   - component: {fileID: 7300757941343760483}
-  - component: {fileID: -225051017843264018}
   - component: {fileID: 5887943131833171111}
   - component: {fileID: 7535459464830580504}
   m_Layer: 0
-  m_Name: Boss
+  m_Name: Melee Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,24 +220,6 @@ MonoBehaviour:
   range: 1
   targetTag: 0
   attackSound: {fileID: 8300000, guid: 65ce85e9a6e93ec439724fb54f03ec1d, type: 3}
---- !u!114 &-225051017843264018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1181838181305677750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 777883abdd8cf8d42ac2e4c8faf0ce5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 2
-  minRange: 3
-  maxRange: 6
-  cooldown: 1.5
-  projectilePrefab: {fileID: 8048191156958303496, guid: c828a4aa778a4a54d84909f25cd58ff9, type: 3}
-  targetTag: 0
 --- !u!114 &5887943131833171111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,14 +232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c853555d1935d2e4fa4582659e95d857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxValues:
-  - 250
-  - 200
-  - 200
-  currentValues:
-  - 0
-  - 0
-  - 0
+  healthBar: {fileID: 0}
+  maxValues: fa000000c8000000c8000000
+  currentValues: 000000000000000000000000
 --- !u!82 &7535459464830580504
 AudioSource:
   m_ObjectHideFlags: 0
