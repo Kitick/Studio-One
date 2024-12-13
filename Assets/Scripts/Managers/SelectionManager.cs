@@ -94,21 +94,21 @@ public class SelectionManager : MonoBehaviour {
 		}
 	}
 
-	private void Select(Selectable selectable){
+	public void Select(Selectable selectable){
 		if(selectedObjects.Contains(selectable)){ return; }
 
 		selectedObjects.Add(selectable);
 		selectable.isSelected = true;
 	}
 
-	private void Deselect(Selectable selectable){
+	public void Deselect(Selectable selectable){
 		if(!selectedObjects.Contains(selectable)){ return; }
 
 		selectedObjects.Remove(selectable);
 		selectable.isSelected = false;
 	}
 
-	private void DeselectAll(){
+	public void DeselectAll(){
 		List<Selectable> selectedObjectsCopy = new List<Selectable>(selectedObjects);
 
 		foreach(Selectable selectable in selectedObjectsCopy){

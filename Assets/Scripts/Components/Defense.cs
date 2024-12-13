@@ -40,8 +40,8 @@ public class Defense : MonoBehaviour {
 		AudioSource explosionSound = gameObject.GetComponent<AudioSource>();
 		explosionSound.Play();
 
-		Selectable selectable = gameObject.GetComponent<Selectable>();
-		if(selectable != null){ selectable.isSelected = false; }
+		SelectionManager selectionManager = FindObjectOfType<SelectionManager>();
+		selectionManager.Deselect(gameObject.GetComponent<Selectable>());
 
 		SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
 		if(renderer != null){ renderer.enabled = false; }
