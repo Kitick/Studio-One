@@ -302,6 +302,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ranged Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 3910835008522222579, guid: 3076271a07f30af49b093e5f4435e673, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910835008522222579, guid: 3076271a07f30af49b093e5f4435e673, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5183627251412391515, guid: 3076271a07f30af49b093e5f4435e673, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.74
@@ -16755,6 +16763,10 @@ PrefabInstance:
     - target: {fileID: 3518627031435972742, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518627031435972742, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
