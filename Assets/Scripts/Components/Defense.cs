@@ -8,6 +8,8 @@ public class Defense : MonoBehaviour {
 	[Header("0 = Health, 1 = Armor, 2 = Sheild")]
 	[SerializeField] private int[] maxValues = new int[3];
 
+	private float slowModifier = 1f;
+	private float burnModifier = 0f;
 	private int[] currentValues = new int[3];
 
 	private void Awake(){
@@ -18,6 +20,15 @@ public class Defense : MonoBehaviour {
 			healthBar.UpdateHealthBar(GetMaxDefense(DefenseType.Health), GetDefense(DefenseType.Health));
 		}
     }
+
+	private void Update(){
+		Movement movement = GetComponent<Movement>();
+		if(movement != null){
+			movement.modifier = slowModifier;
+		}
+
+		Damage(DefenseType.Health, (int)(burnModifier * Time.deltaTime));
+	}
 
 	public int GetDefense(DefenseType type) => currentValues[(int)type];
 	public int GetMaxDefense(DefenseType type) => maxValues[(int)type];
@@ -58,7 +69,6 @@ public class Defense : MonoBehaviour {
 		int remaining = GetDefense(type) - amount;
 		SetDefense(type, remaining);
 
-
 		if(remaining >= 0){ return; }
 
 		remaining = Mathf.Abs(remaining);
@@ -72,6 +82,11 @@ public class Defense : MonoBehaviour {
         }
 
     }
+
+	public void Effect(float slow, float burn){
+		slowModifier = slow;
+		burnModifier = burn;
+	}
 
 	public void DamageWith(DamageType type, int amount){
 		switch(type){

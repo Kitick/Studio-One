@@ -47,7 +47,10 @@ public class Selections : MonoBehaviour
 			textbox.text += $"Shield: {unitDefense.GetDefense(Defense.DefenseType.Sheild)}\n";
 			textbox.text += $"Health: {unitDefense.GetDefense(Defense.DefenseType.Health)}\n";
 			textbox.text += "\n";
-			textbox.text += $"Speed: {unitSpeed.speed}";
+
+			if(unitSpeed != null){
+				textbox.text += $"Speed: {unitSpeed.initalSpeed}";
+			}
 
 			if (unitAttack != null) {
 				textbox.text += $"\nAttack Speed: {unitAttack.AttackSpeed}";
