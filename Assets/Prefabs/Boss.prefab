@@ -188,6 +188,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  stuckThreshold: 1
+  stuckTimeThresh: 0.2
 --- !u!114 &5071581155332532376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,8 +251,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c853555d1935d2e4fa4582659e95d857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxValues: fa000000c8000000c8000000
-  defenseValues: 000000000000000000000000
+  maxValues:
+  - 250
+  - 200
+  - 200
+  currentValues:
+  - 0
+  - 0
+  - 0
 --- !u!82 &7535459464830580504
 AudioSource:
   m_ObjectHideFlags: 0

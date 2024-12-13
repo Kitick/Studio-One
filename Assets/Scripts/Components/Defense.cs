@@ -11,7 +11,11 @@ public class Defense : MonoBehaviour {
 	[SerializeField] private float[] currentValues = new float[3];
 
 	private void Awake(){
-		for (int i = 0; i < maxValues.Length; i++){
+		if(maxValues.Length != currentValues.Length && maxValues.Length != 3){
+			Debug.LogError("Defense: maxValues and currentValues must be the same length.");
+		}
+
+		for (int i = 0; i < currentValues.Length; i++){
 			currentValues[i] = maxValues[i];
 		}
 	}

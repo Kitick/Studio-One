@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5071581155332532376}
   - component: {fileID: 5775044273066983553}
   m_Layer: 0
-  m_Name: Baisc Emeny
+  m_Name: Basic Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,6 +207,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  stuckThreshold: 1
+  stuckTimeThresh: 0.2
 --- !u!114 &5887943131833171111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,8 +221,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c853555d1935d2e4fa4582659e95d857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxValues: 320000000a0000000a000000
-  defenseValues: 000000000000000000000000
+  maxValues:
+  - 50
+  - 10
+  - 10
+  currentValues:
+  - 0
+  - 0
+  - 0
 --- !u!114 &5071581155332532376
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -271,8 +271,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c853555d1935d2e4fa4582659e95d857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxValues: 320000001900000019000000
-  defenseValues: 000000000000000000000000
+  maxValues:
+  - 50
+  - 25
+  - 25
+  currentValues:
+  - 0
+  - 0
+  - 0
 --- !u!114 &953023948943642112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +292,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  stuckThreshold: 1
+  stuckTimeThresh: 0.2
 --- !u!114 &3913214758460670053
 MonoBehaviour:
   m_ObjectHideFlags: 0
