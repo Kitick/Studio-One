@@ -105,6 +105,9 @@ public class UnitSelectionBox : MonoBehaviour
 
     void SelectUnits()
     {
+
+		if (Time.timeScale == 0){ return; }
+
         GameObject[] units = GameObject.FindGameObjectsWithTag(unitTag);
         List<Selectable> selectedUnits = new List<Selectable>();
 
@@ -117,12 +120,12 @@ public class UnitSelectionBox : MonoBehaviour
                 //check if in box
                 Vector3 unitScreenPosition = myCam.WorldToScreenPoint(unit.transform.position);
                 Vector2 unitScreenPosition2D = new Vector2(unitScreenPosition.x, unitScreenPosition.y);
-                
+
                     if (SelectionBox.Contains(unitScreenPosition2D))
                     {
                         selectedUnits.Add(selected);
                     }
-                
+
 
             }
 

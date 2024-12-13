@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour {
 	}
 
 	private void Update(){
+		if (agent == null){ return; }
 
 		//stop unit if stuck
 		if (IsStuck())
