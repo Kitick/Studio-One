@@ -106,8 +106,6 @@ public class UnitSelectionBox : MonoBehaviour
     void SelectUnits()
     {
 
-		if (Time.timeScale == 0){ return; }
-
         GameObject[] units = GameObject.FindGameObjectsWithTag(unitTag);
         List<Selectable> selectedUnits = new List<Selectable>();
 
