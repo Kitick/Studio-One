@@ -66,4 +66,9 @@ public class LevelDot : MonoBehaviour
 
         active = false;
     }
+
+    public void Unlock() {
+        selectable = true;
+        dotSprite.color = Color.green;
+    }
 }
