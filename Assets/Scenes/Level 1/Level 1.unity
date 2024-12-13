@@ -16793,10 +16793,10 @@ PrefabInstance:
 
 
         - You have multiple types of units at your disposial,
-        a basic unit, heavy unit, and a ranged unit.
+        a basic and heavy unit, a ranged unit.
 
-        - Units have two types
-        of damage, energy and physical. Units also have two types of defense, shields
+        - Units have two types of
+        damage, energy and physical. Units also have two types of defense, shields
         and amor.
 
         - Energy damages shields first, physical damages amor

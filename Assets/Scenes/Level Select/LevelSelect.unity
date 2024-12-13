@@ -3566,7 +3566,7 @@ MonoBehaviour:
   dotSprite: {fileID: 2083575114}
   lockedText: {fileID: 1255406457}
   playableText: {fileID: 799611440}
-  levelName: Assets/Scenes/Level 2/Level2.unity
+  levelName: Assets/Scenes/Level 2/Level 2.unity
   selectable: 0
   active: 0
 --- !u!114 &2083575113

@@ -34834,12 +34834,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 69cf72e881c640e469a328715e983fa4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.64, y: 0.89}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -36201,32 +36201,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9217845476143481238, guid: 26cc9888a863cb942b3f3ca440fa813b, type: 3}
       propertyPath: m_text
-      value: 'BASIC TUTORIAL
+      value: 'NEW COMBAT MECHANICS
 
 
-        1. Start by clicking a unit to select it (Shift
-        to cherry pick), or by left mouse drag to box select units.
-
-        2. After
-        selecting units, right click on the map to order them to move there.
-
-        3.
-        When you encounter enemy units, combat will initiate automatically.
+        You now have special support units!
+        But the enemy does too...
 
 
-        COMBAT
-        TUTORIAL
-
-
-        - You have multiple types of units at your disposial,
-        a basic unit, heavy unit, and a ranged unit.
-
-        - Units have two types
-        of damage, energy and physical. Units also have two types of defense, shields
-        and amor.
-
-        - Energy damages shields first, physical damages amor
-        first.'
+        They also have a tower that can shoot
+        long range.'
       objectReference: {fileID: 0}
     - target: {fileID: 9217845476143481238, guid: 26cc9888a863cb942b3f3ca440fa813b, type: 3}
       propertyPath: m_fontSize
@@ -36567,7 +36550,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_UseGeometry: 0
-  m_DefaultArea: 0
+  m_DefaultArea: 1
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 0
