@@ -17656,7 +17656,7 @@ MonoBehaviour:
     m_Bits: 1
   selectMouse: 0
   orderMouse: 1
-  cherryPickKey: 306
+  cherryPickKey: 304
   selectedObjects: []
 --- !u!1001 &1602597889
 PrefabInstance:
@@ -18042,7 +18042,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1739242215
 MonoBehaviour:
   m_ObjectHideFlags: 0

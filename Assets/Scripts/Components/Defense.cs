@@ -5,22 +5,22 @@ public class Defense : MonoBehaviour {
 	public enum DamageType {Physical, Energy}
 
 	[Header("0 = Health, 1 = Armor, 2 = Sheild")]
-	[SerializeField] private int[] maxValues = new int[3];
+	[SerializeField] private float[] maxValues = new float[3];
 
 	[Header("Debugging ONLY")]
-	[SerializeField] public int[] currentValues = new int[3];
+	[SerializeField] private float[] currentValues = new float[3];
 
 	private void Awake(){
-		for (int i = 0; i < currentValues.Length; i++){
+		for (int i = 0; i < maxValues.Length; i++){
 			currentValues[i] = maxValues[i];
 		}
 	}
 
-	public int GetDefense(DefenseType type) => currentValues[(int)type];
-	public int GetMaxDefense(DefenseType type) => maxValues[(int)type];
+	public float GetDefense(DefenseType type) => currentValues[(int)type];
+	public float GetMaxDefense(DefenseType type) => maxValues[(int)type];
 
-	private void SetDefense(DefenseType type, int value){
-		int max = GetMaxDefense(type);
+	private void SetDefense(DefenseType type, float value){
+		float max = GetMaxDefense(type);
 
 		if(value < 0){
 			value = 0;
@@ -33,20 +33,21 @@ public class Defense : MonoBehaviour {
 	}
 
 	private void Die(){
-
-		AudioSource explosionSound = this.gameObject.GetComponent<AudioSource>();
-
+		AudioSource explosionSound = gameObject.GetComponent<AudioSource>();
 		explosionSound.Play();
+
+		SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
+		sprite.enabled = false;
 
 		Destroy(gameObject, 1.0f);
 	}
 
-	public void Restore(int amount, DefenseType type){
+	public void Restore(float amount, DefenseType type){
 		SetDefense(type, GetDefense(type) + amount);
 	}
 
-	public void Damage(DefenseType type, int amount){
-		int remaining = GetDefense(type) - amount;
+	public void TakeDamage(DefenseType type, float amount){
+		float remaining = GetDefense(type) - amount;
 		SetDefense(type, remaining);
 
 		if(remaining >= 0){ return; }
@@ -57,14 +58,14 @@ public class Defense : MonoBehaviour {
 			Die();
 		}
 		else{
-			Damage(DefenseType.Health, remaining);
+			TakeDamage(DefenseType.Health, remaining);
 		}
 	}
 
 	public void DamageWith(DamageType type, int amount){
 		switch(type){
-			case DamageType.Physical: Damage(DefenseType.Armor, amount); break;
-			case DamageType.Energy: Damage(DefenseType.Sheild, amount); break;
+			case DamageType.Physical: TakeDamage(DefenseType.Armor, amount); break;
+			case DamageType.Energy: TakeDamage(DefenseType.Sheild, amount); break;
 		}
 	}
 }

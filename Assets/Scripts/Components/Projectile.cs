@@ -12,6 +12,10 @@ public class Projectile : AttackBase {
 	private Vector2 targetPosition;
 	private bool fired = false;
 
+	public int Damage { get { return damage; } }
+	public float Speed { get { return speed; } }
+	public float EffectArea { get { return effectArea; } }
+
 	private void Awake(){
 		audioSource = GetComponent<AudioSource>();
 	}

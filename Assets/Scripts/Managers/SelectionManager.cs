@@ -8,7 +8,7 @@ public class SelectionManager : MonoBehaviour {
 	[SerializeField] private int selectMouse = 0;
 	[SerializeField] private int orderMouse = 1;
 
-	[SerializeField] private KeyCode cherryPickKey = KeyCode.LeftControl;
+	[SerializeField] private KeyCode cherryPickKey = KeyCode.LeftShift;
 
 	public List<Selectable> selectedObjects = new List<Selectable>();
 
