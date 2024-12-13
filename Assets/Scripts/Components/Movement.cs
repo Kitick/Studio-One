@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class Movement : MonoBehaviour {
-	[SerializeField] public float speed = 5f;
+	[SerializeField] public float initalSpeed = 5f;
+	[SerializeField] public float modifier = 1f;
 
 	//distance to see whether stuck
 	[SerializeField] private float stuckThreshold = 1f;
@@ -15,7 +16,7 @@ public class Movement : MonoBehaviour {
 
 	private void Awake(){
 		agent = GetComponent<NavMeshAgent>();
-		agent.speed = speed;
+		agent.speed = initalSpeed * modifier;
 	}
 
 	private void Update(){

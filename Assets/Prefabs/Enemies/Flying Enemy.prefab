@@ -236,7 +236,7 @@ MonoBehaviour:
   minRange: 1
   maxRange: 4
   cooldown: 1
-  projectilePrefab: {fileID: 8048191156958303496, guid: c828a4aa778a4a54d84909f25cd58ff9, type: 3}
+  projectilePrefab: {fileID: 8048191156958303496, guid: 52b36e3317a7ded4fb30d49959f6fdc9, type: 3}
   targetTag: 0
 --- !u!82 &7732103852987261333
 AudioSource:
