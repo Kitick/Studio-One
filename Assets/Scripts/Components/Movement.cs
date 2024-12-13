@@ -37,10 +37,11 @@ public class Movement : MonoBehaviour {
     }
 
 	private void RotateWithVelocity(){
+		float currentAngle = transform.rotation.z;
 		Vector3 velocity = agent.velocity;
 
 		float angle = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
-		if (velocity.magnitude < 0.1f){ angle = 0; }
+		if (velocity.magnitude < 0.5f){ angle = currentAngle + 90; }
 
 		transform.rotation = Quaternion.Euler(0, 0, angle - 90);
 	}

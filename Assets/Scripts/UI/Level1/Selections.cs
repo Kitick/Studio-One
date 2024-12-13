@@ -12,25 +12,23 @@ public class Selections : MonoBehaviour
 	private GameObject selectedUnit;
 
 	// Update is called once per frame
-	void Update()
-	{
-		if (Input.GetMouseButtonDown(0)) {
-			Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			Vector2 rayOrigin = new Vector2(mousePosition.x, mousePosition.y);
+	void Update(){
+		if (!Input.GetMouseButtonDown(0)) { return; }
 
-			RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.zero, Mathf.Infinity, 3);
+		Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		Vector2 rayOrigin = new Vector2(mousePosition.x, mousePosition.y);
 
-			if (hit.collider.gameObject != null) {
-				unit = hit.collider.gameObject;
+		RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.zero, Mathf.Infinity, 3);
 
-				if (unit != null && (unit.gameObject.tag == "Friendly" || unit.gameObject.tag == "Enemy")) {
-					selectedUnit = unit;
-				} else {
-					selectedUnit = null;
-				}
-			} else {
-				unit = null;
-			}
+		if(hit.collider == null){ return; }
+
+		unit = hit.collider.gameObject;
+		if (unit == null) { return; }
+
+		if (unit.gameObject.CompareTag("Friendly") || unit.gameObject.CompareTag("Enemy")) {
+			selectedUnit = unit;
+		} else {
+			selectedUnit = null;
 		}
 
 		UpdateStatsText();

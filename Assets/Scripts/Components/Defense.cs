@@ -43,6 +43,9 @@ public class Defense : MonoBehaviour {
 		SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
 		sprite.enabled = false;
 
+		Selectable selectable = gameObject.GetComponent<Selectable>();
+		if(selectable != null){ selectable.enabled = false; }
+
 		Destroy(gameObject, 1.0f);
 	}
 
