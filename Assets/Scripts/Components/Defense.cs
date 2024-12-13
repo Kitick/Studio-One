@@ -8,8 +8,7 @@ public class Defense : MonoBehaviour {
 	[Header("0 = Health, 1 = Armor, 2 = Sheild")]
 	[SerializeField] private int[] maxValues = new int[3];
 
-	[Header("Debugging ONLY")]
-	[SerializeField] public int[] currentValues = new int[3];
+	private int[] currentValues = new int[3];
 
 	private void Awake(){
         for (int i = 0; i < currentValues.Length; i++){
