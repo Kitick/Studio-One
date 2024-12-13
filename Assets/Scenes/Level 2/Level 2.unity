@@ -36427,6 +36427,14 @@ PrefabInstance:
       propertyPath: m_BlockingMask.m_Bits
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2986271315520241652, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 156.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2986271315520241652, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -30.472
+      objectReference: {fileID: 0}
     - target: {fileID: 3109019271870841171, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
       propertyPath: m_text
       value: 'NEW COMBAT MECHANICS
@@ -36441,12 +36449,32 @@ PrefabInstance:
 '
       objectReference: {fileID: 0}
     - target: {fileID: 3449080773010079332, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 302.2352
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449080773010079332, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 69.3329
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449080773010079332, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -248.8824
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449080773010079332, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 103.11867
+      value: 159.22096
       objectReference: {fileID: 0}
     - target: {fileID: 3518627031435972742, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810719825709692567, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 27.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810719825709692567, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -37.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
