@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 public class SelectionManager : MonoBehaviour {
 	[SerializeField] private Camera mainCamera;
@@ -81,34 +82,51 @@ public class SelectionManager : MonoBehaviour {
 
 		Selectable selected = hit.collider.GetComponent<Selectable>();
 
-		if(selected == null){ MoveOrder(hit.point); }
+		if(selected == null){ Formation(hit.point); }
 	}
 
-	private void MoveOrder(Vector3 destination){
-		foreach(Selectable selectable in selectedObjects){
-			Movement movable = selectable.GetComponent<Movement>();
+	private void Formation(Vector2 destination){
+		int toMove = selectedObjects.Count;
+		int count = 0;
 
-			if(movable == null){ continue; }
+		float pi2 = Mathf.PI * 2;
 
-			movable.MoveTo(destination);
+		for(int r = 0; true; r++){
+			for(float t = 0; t < pi2; t += pi2 / (4*r)){
+				if(count >= toMove){ return; }
+				Debug.Log("Radius: " + r + " Angle: " + t);
+
+				Vector2 offset = new Vector2(Mathf.Cos(t), Mathf.Sin(t)) * r * 1.25f;
+
+				MoveOrder(selectedObjects[count], destination + offset);
+				count++;
+
+				if(r == 0){ break; }
+			}
 		}
 	}
 
-	private void Select(Selectable selectable){
+	private void MoveOrder(Selectable unit, Vector2 destination){
+		Movement movable = unit.GetComponent<Movement>();
+		if(movable == null){ return; }
+		movable.MoveTo(destination);
+	}
+
+	public void Select(Selectable selectable){
 		if(selectedObjects.Contains(selectable)){ return; }
 
 		selectedObjects.Add(selectable);
 		selectable.isSelected = true;
 	}
 
-	private void Deselect(Selectable selectable){
+	public void Deselect(Selectable selectable){
 		if(!selectedObjects.Contains(selectable)){ return; }
 
 		selectedObjects.Remove(selectable);
 		selectable.isSelected = false;
 	}
 
-	private void DeselectAll(){
+	public void DeselectAll(){
 		List<Selectable> selectedObjectsCopy = new List<Selectable>(selectedObjects);
 
 		foreach(Selectable selectable in selectedObjectsCopy){

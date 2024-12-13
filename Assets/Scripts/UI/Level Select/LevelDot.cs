@@ -56,7 +56,6 @@ public class LevelDot : MonoBehaviour
 
     public void HoverOff() {
 
-        Debug.Log("Hovered Off");
         if (selectable == false && active == true) {
             lockedText.GetComponent<Animation>()["Hovered"].speed = -1.0f;
             lockedText.GetComponent<Animation>().Play();
