@@ -36173,32 +36173,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9217845476143481238, guid: 26cc9888a863cb942b3f3ca440fa813b, type: 3}
       propertyPath: m_text
-      value: 'BASIC TUTORIAL
+      value: 'NEW COMBAT MECHANICS
 
 
-        1. Start by clicking a unit to select it (Shift
-        to cherry pick), or by left mouse drag to box select units.
-
-        2. After
-        selecting units, right click on the map to order them to move there.
-
-        3.
-        When you encounter enemy units, combat will initiate automatically.
+        You now have flying units! But the enemy
+        does too...
 
 
-        COMBAT
-        TUTORIAL
-
-
-        - You have multiple types of units at your disposial,
-        a basic unit, heavy unit, and a ranged unit.
-
-        - Units have two types
-        of damage, energy and physical. Units also have two types of defense, shields
-        and amor.
-
-        - Energy damages shields first, physical damages amor
-        first.'
+        They also have a tower that can shoot long range.'
       objectReference: {fileID: 0}
     - target: {fileID: 9217845476143481238, guid: 26cc9888a863cb942b3f3ca440fa813b, type: 3}
       propertyPath: m_fontSize
