@@ -50,5 +50,5 @@ MonoBehaviour:
     m_Bits: 1
   selectMouse: 0
   orderMouse: 1
-  cherryPickKey: 306
+  cherryPickKey: 304
   selectedObjects: []
