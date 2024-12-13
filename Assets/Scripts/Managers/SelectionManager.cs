@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Unity.Mathematics;
 
 public class SelectionManager : MonoBehaviour {
 	[SerializeField] private Camera mainCamera;
@@ -81,17 +83,55 @@ public class SelectionManager : MonoBehaviour {
 
 		Selectable selected = hit.collider.GetComponent<Selectable>();
 
-		if(selected == null){ MoveOrder(hit.point); }
+		if(selected == null){ Formation(hit.point); }
 	}
 
-	private void MoveOrder(Vector3 destination){
+	private void SortList(){
+		List<Selectable> innerList = new List<Selectable>();
+		List<Selectable> outerList = new List<Selectable>();
+
 		foreach(Selectable selectable in selectedObjects){
-			Movement movable = selectable.GetComponent<Movement>();
-
-			if(movable == null){ continue; }
-
-			movable.MoveTo(destination);
+			if(selectable.GetComponent<RangedAttack>() != null){
+				innerList.Add(selectable);
+			}
+			else{
+				outerList.Add(selectable);
+			}
 		}
+
+		selectedObjects.Clear();
+
+		selectedObjects.AddRange(innerList);
+		selectedObjects.AddRange(outerList);
+	}
+
+	private void Formation(Vector2 destination){
+		SortList();
+
+		int remaining = selectedObjects.Count;
+
+		float pi2 = Mathf.PI * 2;
+
+		for(int r = 0; true; r++){
+			int ringSize = Mathf.Min(4 * r, remaining);
+
+			for(float t = 0; t < pi2; t += pi2 / ringSize){
+				if(remaining == 0){ return; }
+
+				Vector2 offset = new Vector2(Mathf.Cos(t), Mathf.Sin(t)) * r * 1.25f;
+
+				MoveOrder(selectedObjects[selectedObjects.Count - remaining], destination + offset);
+				remaining--;
+
+				if(r == 0){ break; }
+			}
+		}
+	}
+
+	private void MoveOrder(Selectable unit, Vector2 destination){
+		Movement movable = unit.GetComponent<Movement>();
+		if(movable == null){ return; }
+		movable.MoveTo(destination);
 	}
 
 	public void Select(Selectable selectable){

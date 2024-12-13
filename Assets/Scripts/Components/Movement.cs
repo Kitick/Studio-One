@@ -26,7 +26,7 @@ public class Movement : MonoBehaviour {
 			timeStuck += Time.deltaTime;
 			if (timeStuck > stuckTimeThresh)
 			{
-				Stop();
+				//Stop();
 			}
 		} else
 		{
@@ -46,7 +46,7 @@ public class Movement : MonoBehaviour {
 		transform.rotation = Quaternion.Euler(0, 0, angle - 90);
 	}
 
-	public void MoveTo(Vector3 position){
+	public void MoveTo(Vector2 position){
 		agent.SetDestination(position);
 	}
 
