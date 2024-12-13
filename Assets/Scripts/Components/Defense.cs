@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class Defense : MonoBehaviour {
+	[SerializeField] private HealthBar healthBar;
 	public enum DefenseType {Health, Armor, Sheild}
 	public enum DamageType {Physical, Energy}
 
@@ -11,10 +12,18 @@ public class Defense : MonoBehaviour {
 	[SerializeField] public int[] currentValues = new int[3];
 
 	private void Awake(){
-		for (int i = 0; i < currentValues.Length; i++){
+        for (int i = 0; i < currentValues.Length; i++){
 			currentValues[i] = maxValues[i];
 		}
-	}
+		if (healthBar == null)
+		{
+			Debug.LogError("no health bar");
+				} else
+		{
+			healthBar.UpdateHealthBar(maxValues[0], currentValues[0]); ;
+		}
+		
+    }
 
 	public int GetDefense(DefenseType type) => currentValues[(int)type];
 	public int GetMaxDefense(DefenseType type) => maxValues[(int)type];
@@ -38,6 +47,9 @@ public class Defense : MonoBehaviour {
 
 		explosionSound.Play();
 
+		Selectable selectable = gameObject.GetComponent<Selectable>();
+		if(selectable != null){ selectable.enabled = false; }
+
 		Destroy(gameObject, 1.0f);
 	}
 
@@ -49,6 +61,7 @@ public class Defense : MonoBehaviour {
 		int remaining = GetDefense(type) - amount;
 		SetDefense(type, remaining);
 
+
 		if(remaining >= 0){ return; }
 
 		remaining = Mathf.Abs(remaining);
@@ -58,8 +71,10 @@ public class Defense : MonoBehaviour {
 		}
 		else{
 			Damage(DefenseType.Health, remaining);
-		}
-	}
+			healthBar.UpdateHealthBar(maxValues[0], currentValues[0]);
+        }
+        
+    }
 
 	public void DamageWith(DamageType type, int amount){
 		switch(type){

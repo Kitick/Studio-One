@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class Movement : MonoBehaviour {
 	[SerializeField] public float speed = 5f;
-	
+
 	//distance to see whether stuck
 	[SerializeField] private float stuckThreshold = 1f;
 
@@ -15,10 +15,11 @@ public class Movement : MonoBehaviour {
 
 	private void Awake(){
 		agent = GetComponent<NavMeshAgent>();
+		agent.speed = speed;
 	}
 
 	private void Update(){
-		
+
 		//stop unit if stuck
 		if (IsStuck())
 		{
@@ -32,9 +33,18 @@ public class Movement : MonoBehaviour {
 			timeStuck = 0f; //resetting stuck timer if unit unsticks
 		}
 
-		agent.speed = speed;
-        transform.rotation = Quaternion.Euler(0, 0, 0);
+		RotateWithVelocity();
     }
+
+	private void RotateWithVelocity(){
+		float currentAngle = transform.rotation.z;
+		Vector3 velocity = agent.velocity;
+
+		float angle = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
+		if (velocity.magnitude < 0.5f){ angle = currentAngle + 90; }
+
+		transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+	}
 
 	public void MoveTo(Vector3 position){
 		agent.SetDestination(position);

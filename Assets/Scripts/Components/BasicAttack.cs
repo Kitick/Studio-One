@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class BasicAttack : AttackBase {
-	[SerializeField] private int damage = 5;
+	[SerializeField] private float damage = 5f;
 	[SerializeField] private float cooldown = 1f;
 	[SerializeField] private float range = 1f;
 	[SerializeField] private TargetTag targetTag = TargetTag.Enemy;
@@ -11,6 +11,11 @@ public class BasicAttack : AttackBase {
 	private AudioSource audioSource;
 
 	private float lastAttackTime;
+
+	public float Damage { get { return damage; } }
+	public float Range { get { return range; } }
+	public float AttackSpeed { get { return 1 / cooldown; } }
+
 
 	private void Awake(){
 		audioSource = gameObject.AddComponent<AudioSource>();
@@ -35,7 +40,7 @@ public class BasicAttack : AttackBase {
 		Defense defense = target.GetComponent<Defense>();
 
 		audioSource.Play();
-		defense.Damage(Defense.DefenseType.Armor, damage);
+		defense.Damage(Defense.DefenseType.Armor, (int)damage);
 
 		lastAttackTime = Time.time;
 	}
