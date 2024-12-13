@@ -135,12 +135,24 @@ PrefabInstance:
       value: Tower Variant
       objectReference: {fileID: 0}
     - target: {fileID: 823110933721136559, guid: 2080e2ce2a927e44bbdc6510b4942c05, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3416624
+      objectReference: {fileID: 0}
+    - target: {fileID: 823110933721136559, guid: 2080e2ce2a927e44bbdc6510b4942c05, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3416624
+      objectReference: {fileID: 0}
+    - target: {fileID: 823110933721136559, guid: 2080e2ce2a927e44bbdc6510b4942c05, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3416624
+      objectReference: {fileID: 0}
+    - target: {fileID: 823110933721136559, guid: 2080e2ce2a927e44bbdc6510b4942c05, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.94
       objectReference: {fileID: 0}
     - target: {fileID: 823110933721136559, guid: 2080e2ce2a927e44bbdc6510b4942c05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.34
+      value: 2.1921
       objectReference: {fileID: 0}
     - target: {fileID: 823110933721136559, guid: 2080e2ce2a927e44bbdc6510b4942c05, type: 3}
       propertyPath: m_LocalPosition.z
@@ -35828,11 +35840,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5183627251412391515, guid: 69fd150c9933d2842b441ed426687a43, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.67579
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5183627251412391515, guid: 69fd150c9933d2842b441ed426687a43, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.301132
+      value: 0.88475
       objectReference: {fileID: 0}
     - target: {fileID: 5183627251412391515, guid: 69fd150c9933d2842b441ed426687a43, type: 3}
       propertyPath: m_LocalPosition.z
@@ -36467,6 +36479,10 @@ PrefabInstance:
     - target: {fileID: 3518627031435972742, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518627031435972742, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4810719825709692567, guid: de6e0017889e56349ae54e176e1c78ec, type: 3}
       propertyPath: m_AnchoredPosition.x
