@@ -5,18 +5,18 @@ public class Defense : MonoBehaviour {
 	public enum DamageType {Physical, Energy}
 
 	[Header("0 = Health, 1 = Armor, 2 = Sheild")]
-	[SerializeField] public int[] maxValues = new int[3];
+	[SerializeField] private int[] maxValues = new int[3];
 
 	[Header("Debugging ONLY")]
-	[SerializeField] private int[] defenseValues = new int[3];
+	[SerializeField] public int[] currentValues = new int[3];
 
 	private void Awake(){
-		for (int i = 0; i < defenseValues.Length; i++){
-			defenseValues[i] = maxValues[i];
+		for (int i = 0; i < currentValues.Length; i++){
+			currentValues[i] = maxValues[i];
 		}
 	}
 
-	public int GetDefense(DefenseType type) => defenseValues[(int)type];
+	public int GetDefense(DefenseType type) => currentValues[(int)type];
 	public int GetMaxDefense(DefenseType type) => maxValues[(int)type];
 
 	private void SetDefense(DefenseType type, int value){
@@ -29,7 +29,7 @@ public class Defense : MonoBehaviour {
 			value = max;
 		}
 
-		defenseValues[(int)type] = value;
+		currentValues[(int)type] = value;
 	}
 
 	private void Die(){
@@ -37,7 +37,7 @@ public class Defense : MonoBehaviour {
 		AudioSource explosionSound = this.gameObject.GetComponent<AudioSource>();
 
 		explosionSound.Play();
-		
+
 		Destroy(gameObject, 1.0f);
 	}
 

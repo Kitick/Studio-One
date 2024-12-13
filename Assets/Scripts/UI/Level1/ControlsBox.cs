@@ -9,7 +9,7 @@ public class ControlsBox : MonoBehaviour
 {
     public Animator anim;
 
-    public void setAnim() {
+    public void SetAnim() {
         anim.SetBool("On", !anim.GetBool("On"));
     }
 }

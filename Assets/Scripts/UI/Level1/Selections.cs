@@ -42,12 +42,12 @@ public class Selections : MonoBehaviour
             Defense unitDefense = selectedUnit.GetComponent<Defense>();
             Movement unitSpeed = selectedUnit.GetComponent<Movement>();
 
-            textbox.text = $"Health: {unitDefense.maxValues[0]}\n" +
-                             $"Armor: {unitDefense.maxValues[1]}\n" +
-                             $"Shield: {unitDefense.maxValues[2]}\n" +
-                             $"Speed: {unitSpeed.speed}";
+            textbox.text = $"Health: {unitDefense.currentValues[0]}\n" +
+                           $"Armor: {unitDefense.currentValues[1]}\n" +
+                           $"Shield: {unitDefense.currentValues[2]}\n" +
+                           $"Speed: {unitSpeed.speed}";
         } else {
-            textbox.text = "No unit selected.";
+            textbox.text = "";
         }
 
     }
