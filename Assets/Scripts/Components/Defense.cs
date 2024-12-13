@@ -15,14 +15,9 @@ public class Defense : MonoBehaviour {
         for (int i = 0; i < currentValues.Length; i++){
 			currentValues[i] = maxValues[i];
 		}
-		if (healthBar == null)
-		{
-			Debug.LogError("no health bar");
-				} else
-		{
-			healthBar.UpdateHealthBar(maxValues[0], currentValues[0]); ;
+		if (healthBar != null){
+			healthBar.UpdateHealthBar(GetMaxDefense(DefenseType.Health), GetDefense(DefenseType.Health));
 		}
-		
     }
 
 	public int GetDefense(DefenseType type) => currentValues[(int)type];
@@ -42,13 +37,16 @@ public class Defense : MonoBehaviour {
 	}
 
 	private void Die(){
-
-		AudioSource explosionSound = this.gameObject.GetComponent<AudioSource>();
-
+		AudioSource explosionSound = gameObject.GetComponent<AudioSource>();
 		explosionSound.Play();
 
 		Selectable selectable = gameObject.GetComponent<Selectable>();
-		if(selectable != null){ selectable.enabled = false; }
+		if(selectable != null){ selectable.isSelected = false; }
+
+		SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
+		if(renderer != null){ renderer.enabled = false; }
+
+		if(healthBar != null){ healthBar.gameObject.SetActive(false); }
 
 		Destroy(gameObject, 1.0f);
 	}
@@ -73,7 +71,7 @@ public class Defense : MonoBehaviour {
 			Damage(DefenseType.Health, remaining);
 			healthBar.UpdateHealthBar(maxValues[0], currentValues[0]);
         }
-        
+
     }
 
 	public void DamageWith(DamageType type, int amount){
